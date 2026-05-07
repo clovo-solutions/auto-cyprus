@@ -1,3 +1,5 @@
+import type { Where } from 'payload';
+
 export const PAGE_SIZE = 12;
 
 export type SortKey =
@@ -164,8 +166,8 @@ export function filtersToQuery(f: Filters): URLSearchParams {
   return params;
 }
 
-export function applyFiltersToWhere(f: Filters, brandIdMap: Record<string, string>): Record<string, unknown> {
-  const where: Record<string, unknown> = {
+export function applyFiltersToWhere(f: Filters, brandIdMap: Record<string, string>): Where {
+  const where: Where = {
     status: { not_equals: 'sold' },
   };
 
