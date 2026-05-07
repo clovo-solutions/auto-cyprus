@@ -1,5 +1,6 @@
 import { unstable_cache } from 'next/cache';
 import { getPayloadClient } from './payload';
+import type { Where } from 'payload';
 import type { Locale } from '@/i18n/config';
 import type { Car, Brand } from '@/payload-types';
 import {
@@ -175,7 +176,7 @@ export async function findSimilarCars(
           ? car.brand.id
           : null;
 
-      const where: Record<string, unknown> = {
+      const where: Where = {
         and: [
           { id: { not_equals: car.id } },
           { status: { equals: 'available' } },
