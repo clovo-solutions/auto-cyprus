@@ -1,0 +1,13 @@
+diff --git a/lib/core/symbols.js b/lib/core/symbols.js
+index c8ba5dd8ec596415bf1b0f131ab2ce242a99ec05..1f89fc28ee25675483d4f3e08afa7358c1f90014 100644
+--- a/lib/core/symbols.js
++++ b/lib/core/symbols.js	
+@@ -57,7 +57,7 @@ module.exports = {
+   kHTTP2Session: Symbol('http2Session'),
+   kHTTP2SessionState: Symbol('http2Session state'),
+   kRetryHandlerDefaultRetry: Symbol('retry agent default retry'),
+-  kConstruct: Symbol('constructable'),
++  kConstruct: Symbol.for('undici.constructable'),
+   kListeners: Symbol('listeners'),
+   kHTTPContext: Symbol('http context'),
+   kMaxConcurrentStreams: Symbol('max concurrent streams'),

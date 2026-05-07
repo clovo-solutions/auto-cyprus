@@ -7,6 +7,11 @@ settings:
 overrides:
   undici: 6.21.1
 
+patchedDependencies:
+  undici@6.21.1:
+    hash: 92784d1936eca50b4a68bc0bff1ab1a70a822d36286de9d1d0cc610338902f6f
+    path: patches/undici@6.21.1.patch
+
 importers:
 
   .:
@@ -5908,7 +5913,7 @@ snapshots:
       sanitize-filename: 1.6.3
       ts-essentials: 10.0.3(typescript@5.9.3)
       tsx: 4.21.0
-      undici: 6.21.1
+      undici: 6.21.1(patch_hash=92784d1936eca50b4a68bc0bff1ab1a70a822d36286de9d1d0cc610338902f6f)
       uuid: 11.1.0
       ws: 8.20.0
     transitivePeerDependencies:
@@ -6316,7 +6321,7 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici@6.21.1: {}
+  undici@6.21.1(patch_hash=92784d1936eca50b4a68bc0bff1ab1a70a822d36286de9d1d0cc610338902f6f): {}
 
   unist-util-is@6.0.1:
     dependencies:
