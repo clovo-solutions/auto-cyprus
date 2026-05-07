@@ -6,7 +6,8 @@ import { SplitReveal } from '@/components/motion/SplitReveal';
 import { Reveal } from '@/components/motion/Reveal';
 import { Magnetic } from '@/components/motion/Magnetic';
 import { CountUp } from '@/components/motion/CountUp';
-import { HeroVideo } from './HeroVideo';
+import Image from 'next/image';
+import { HeroVideoPlayer } from './HeroVideoPlayer';
 
 interface HeroProps {
   locale: Locale;
@@ -66,17 +67,41 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
           minHeight: '560px',
         }}
       >
-        {/* Video — z-index 0 */}
-        <div className="absolute inset-0" style={{ zIndex: 0 }}>
-          <HeroVideo
-            sources={[
-              {
-                src: '/hero.mp4',
-                type: 'video/mp4',
-              },
-            ]}
-            posterUrl="/hero-poster.webp"
+        {/* Background — z-index 0.
+            Image lives in this server component so Next.js generates fetchpriority=high
+            + <link rel="preload"> in <head> for LCP optimisation. */}
+        <div className="absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+          <Image
+            src="/hero-poster.webp"
+            alt=""
+            fill
+            priority
+            sizes="(min-width: 1280px) 1280px, (min-width: 768px) 1024px, 768px"
+            quality={75}
+            className="object-cover"
+            aria-hidden="true"
+          />
+          <HeroVideoPlayer
+            sources={[{ src: '/hero.mp4', type: 'video/mp4' }]}
             alt="Behind the wheel — a closer look at the cars Auto Cyprus puts on the road"
+          />
+          {/* Warm color-grade overlay */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 mix-blend-multiply pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to bottom, rgba(176,138,74,0.08) 0%, rgba(14,17,22,0) 30%, rgba(14,17,22,0.45) 100%)',
+            }}
+          />
+          {/* Bottom veil — headline legibility on any video frame */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-0 bottom-0 h-2/3 pointer-events-none"
+            style={{
+              background:
+                'linear-gradient(to top, rgba(14,17,22,0.78) 0%, rgba(14,17,22,0.32) 50%, rgba(14,17,22,0) 100%)',
+            }}
           />
         </div>
 
