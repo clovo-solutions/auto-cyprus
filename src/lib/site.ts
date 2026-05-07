@@ -1,0 +1,46 @@
+function envString(key: string, fallback = ''): string {
+  const value = process.env[key];
+  if (value === undefined || value === null || value.trim() === '') {
+    return fallback;
+  }
+  return value.trim();
+}
+
+export const site = {
+  name: 'Auto Cyprus',
+  shortName: 'Auto // Cyprus',
+  url: envString('NEXT_PUBLIC_SITE_URL', 'http://localhost:3000'),
+  phone: envString('NEXT_PUBLIC_PHONE', '+35722000000'),
+  whatsapp: envString('NEXT_PUBLIC_WHATSAPP', '+35799000000'),
+  email: envString('NEXT_PUBLIC_EMAIL', 'hello@autocyprus.example'),
+  address: envString('NEXT_PUBLIC_ADDRESS', 'Limassol, Cyprus'),
+  geo: {
+    lat: 35.1856,
+    lng: 33.3823,
+  },
+};
+
+function digitsOnly(value: string): string {
+  return value.replace(/[^\d+]/g, '');
+}
+
+export function phoneHref(): string {
+  return `tel:${digitsOnly(site.phone)}`;
+}
+
+export function whatsappHref(): string {
+  // wa.me requires no leading +
+  const cleaned = digitsOnly(site.whatsapp).replace(/^\+/, '');
+  return `https://wa.me/${cleaned}`;
+}
+
+export function emailHref(subject?: string): string {
+  if (subject) {
+    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+  }
+  return `mailto:${site.email}`;
+}
+
+export function mapsHref(): string {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address)}`;
+}

@@ -1,0 +1,448 @@
+{
+  "common": {
+    "siteName": "Auto Cyprus",
+    "siteTagline": "Quality cars, all over Cyprus.",
+    "callUs": "Call us",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "viewAll": "View all",
+    "viewDetails": "View details",
+    "loading": "Loading…",
+    "submit": "Submit",
+    "send": "Send",
+    "name": "Name",
+    "phone": "Phone",
+    "message": "Message",
+    "yourMessage": "Your message",
+    "required": "Required",
+    "optional": "Optional",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "menu": "Menu",
+    "language": "Language",
+    "openInNewTab": "Opens in a new tab"
+  },
+  "nav": {
+    "home": "Home",
+    "cars": "Inventory",
+    "sell": "Sell your car",
+    "about": "About",
+    "contact": "Contact",
+    "showroom": "Visit showroom"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "address": "Showroom",
+    "hours": "Opening hours",
+    "weekdays": "Mon–Fri 09:00 – 19:00",
+    "saturday": "Saturday 10:00 – 16:00",
+    "sunday": "Sunday by appointment",
+    "tagline": "Twelve years on the island and over three thousand cars sold to happy owners.",
+    "explore": "Explore",
+    "company": "Company",
+    "contact": "Get in touch",
+    "legal": "Imprint & Privacy"
+  },
+"home": {
+  "hero": {
+    "eyebrow": "Limassol · Since 2013",
+    "headline": "Cars worth knowing.",
+    "sub": "",
+    "primaryCta": "See our cars",
+    "secondaryCta": "Visit the showroom"
+  },
+    "trust": {
+      "title": "What that means for you",
+      "items": {
+        "inspection": {
+          "stat": "100",
+          "label": "Checks per car",
+          "body": "Every car goes through a full written inspection before it goes on sale. Nothing skipped, nothing hidden."
+        },
+        "history": {
+          "stat": "12 yrs",
+          "label": "On the island",
+          "body": "We've been buying and selling cars in Cyprus since 2013. We know the market and the cars."
+        },
+        "customers": {
+          "stat": "3,000+",
+          "label": "Happy owners",
+          "body": "From first-time buyers in Strovolos to families in Limassol and Paphos. Many come back when it's time for the next car."
+        },
+        "return": {
+          "stat": "7 days",
+          "label": "Return policy",
+          "body": "Take it home for a week. If it's not the right car for you, bring it back. Simple as that."
+        }
+      }
+    },
+    "featured": {
+      "eyebrow": "In stock this week",
+      "title": "Available right now.",
+      "sub": "Our stock changes every week. What you see here is exactly what's on the lot today — no bait-and-switch.",
+      "cta": "See all cars"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Three simple steps",
+      "steps": {
+        "one": {
+          "title": "Tell us what you're looking for",
+          "body": "Give us a call, send a WhatsApp, or fill in the form. We'll let you know what we have, what's coming in, and whether it's worth waiting."
+        },
+        "two": {
+          "title": "Come and see the car",
+          "body": "Visit the showroom, take a test drive, and check the full history. Bring your own mechanic if you'd like — we always recommend it."
+        },
+        "three": {
+          "title": "Drive it home",
+          "body": "We sort the paperwork in an afternoon. Trade-ins, financing, and delivery anywhere on the island — all handled by us."
+        }
+      }
+    },
+    "categories": {
+      "eyebrow": "By body type",
+      "title": "Find the right type for you",
+      "items": {
+        "suv": "SUV",
+        "sedan": "Sedan",
+        "coupe": "Coupe",
+        "hatchback": "Hatchback",
+        "convertible": "Convertible",
+        "wagon": "Estate"
+      }
+    },
+    "wall": {
+      "eyebrow": "Real customers",
+      "title": "What our customers say",
+      "sub": "These are real people who bought a car from us. No fake reviews, no paid testimonials."
+    },
+    "cta": {
+      "title": "In Limassol? Come say hello.",
+      "sub": "We're open six days a week. It's always better to see a car in person than to read another spec sheet online.",
+      "primary": "Get directions",
+      "secondary": "Call the showroom"
+    }
+  },
+  "cars": {
+    "title": "Our cars",
+    "sub": "Every car we have available right now.",
+    "filters": {
+      "title": "Filter",
+      "clear": "Clear all",
+      "apply": "Apply",
+      "brand": "Brand",
+      "anyBrand": "Any brand",
+      "bodyType": "Body type",
+      "anyBody": "Any body",
+      "fuelType": "Fuel",
+      "anyFuel": "Any fuel",
+      "transmission": "Transmission",
+      "anyTransmission": "Any",
+      "priceRange": "Price (€)",
+      "yearRange": "Year",
+      "mileageRange": "Mileage (km)",
+      "min": "Min",
+      "max": "Max",
+      "results": "{count, plural, =0 {No cars match} =1 {1 car} other {# cars}}"
+    },
+    "sort": {
+      "label": "Sort",
+      "newest": "Newest first",
+      "priceAsc": "Price · low to high",
+      "priceDesc": "Price · high to low",
+      "yearDesc": "Year · newest",
+      "mileageAsc": "Mileage · lowest"
+    },
+    "fuel": {
+      "petrol": "Petrol",
+      "diesel": "Diesel",
+      "hybrid": "Hybrid",
+      "phev": "Plug-in hybrid",
+      "electric": "Electric"
+    },
+    "transmission": {
+      "manual": "Manual",
+      "automatic": "Automatic"
+    },
+    "body": {
+      "sedan": "Sedan",
+      "suv": "SUV",
+      "coupe": "Coupe",
+      "hatchback": "Hatchback",
+      "wagon": "Estate",
+      "convertible": "Convertible",
+      "pickup": "Pickup"
+    },
+    "drive": {
+      "fwd": "Front-wheel",
+      "rwd": "Rear-wheel",
+      "awd": "All-wheel"
+    },
+    "status": {
+      "available": "Available",
+      "reserved": "Reserved",
+      "sold": "Sold"
+    },
+    "card": {
+      "kmShort": "km",
+      "from": "From",
+      "onRequest": "Price on request",
+      "view": "View"
+    },
+    "empty": {
+      "title": "No cars match your filters.",
+      "sub": "Try widening the price range or removing the brand filter.",
+      "reset": "Reset filters"
+    },
+    "pagination": {
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page {page} of {total}"
+    }
+  },
+  "carDetail": {
+    "specs": "Specifications",
+    "features": "Equipment & features",
+    "description": "About this car",
+    "similar": "You might also like",
+    "inquireTitle": "Interested in this {make}?",
+    "inquireSub": "Send us a quick message — we usually reply within the hour.",
+    "specLabels": {
+      "year": "Year",
+      "mileage": "Mileage",
+      "transmission": "Transmission",
+      "fuel": "Fuel",
+      "body": "Body",
+      "color": "Colour",
+      "engine": "Engine",
+      "power": "Power",
+      "torque": "Torque",
+      "drive": "Drivetrain",
+      "vin": "VIN"
+    },
+    "units": {
+      "hp": "hp",
+      "nm": "Nm",
+      "cc": "cc",
+      "km": "km"
+    },
+    "soldNotice": "This car has been sold. Get in touch — we likely have something similar coming in soon.",
+    "reservedNotice": "This car is currently reserved.",
+    "stickyInquire": "Inquire",
+    "stickyCall": "Call",
+    "gallery": {
+      "open": "Open gallery",
+      "of": "of",
+      "previous": "Previous photo",
+      "next": "Next photo"
+    }
+  },
+  "inquiry": {
+    "fields": {
+      "name": "Your name",
+      "phone": "Phone or WhatsApp",
+      "email": "Email",
+      "message": "Anything you'd like to mention?",
+      "messagePlaceholder": "Trade-in, financing, mileage, anything else — let us know."
+    },
+    "consent": "I'd like to be contacted about this car.",
+    "submit": "Send inquiry",
+    "submitting": "Sending…",
+    "success": {
+      "title": "Thanks! We'll be in touch soon.",
+      "body": "We've received your message and will get back to you during business hours."
+    },
+    "error": {
+      "title": "Something went wrong.",
+      "body": "Please try again, or just give us a call — we'd rather hear from you than miss your message."
+    }
+  },
+  "sell": {
+    "hero": {
+      "eyebrow": "Sell to us",
+      "headline": "A simple, hassle-free way to sell your car.",
+      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door."
+    },
+    "pitch": {
+      "title": "Why sell to us instead of advertising privately",
+      "items": {
+        "speed": {
+          "title": "Days, not months",
+          "body": "Selling privately usually takes six to eight weeks. With us, it's three to five days from inspection to bank transfer."
+        },
+        "fair": {
+          "title": "A fair, honest price",
+          "body": "Our offer is based on what your car is actually worth in today's market. We'll show you exactly how we worked out the number."
+        },
+        "clean": {
+          "title": "All the paperwork sorted",
+          "body": "Title transfer, road tax, insurance cancellation — we handle every form so you don't waste a day at the registry."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Four steps. About a week.",
+      "steps": {
+        "one": {
+          "label": "Day 1",
+          "title": "Send us the details",
+          "body": "Tell us about your car. Photos help, but they're not required."
+        },
+        "two": {
+          "label": "Day 1–2",
+          "title": "First offer",
+          "body": "We'll get back with an estimated price within 24 hours, based on what you've told us."
+        },
+        "three": {
+          "label": "Day 3–4",
+          "title": "Inspection",
+          "body": "We come to you, or you come to us. The inspection takes around twenty minutes."
+        },
+        "four": {
+          "label": "Day 5",
+          "title": "Final offer & payment",
+          "body": "Bank transfer the same day. We take care of all the paperwork."
+        }
+      }
+    },
+    "form": {
+      "title": "Tell us about your car",
+      "sub": "The more details you share, the more accurate our estimate will be.",
+      "fields": {
+        "make": "Make",
+        "model": "Model",
+        "year": "Year",
+        "mileage": "Mileage (km)",
+        "asking": "Asking price (€)",
+        "askingHelp": "Optional. We'll come back to you with our own offer either way.",
+        "name": "Your name",
+        "phone": "Phone or WhatsApp",
+        "email": "Email",
+        "notes": "Anything else?",
+        "notesPlaceholder": "Service history, modifications, accident history, lease — anything that's relevant."
+      },
+      "submit": "Get an estimated offer"
+    }
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Find us",
+      "headline": "Drop by — we'd love to meet you in person.",
+      "sub": "Our showroom is in central Limassol, twenty minutes from the airport and a five-minute walk from the GSP Stadium."
+    },
+    "tiles": {
+      "phone": {
+        "label": "Phone",
+        "help": "Mon–Sat, business hours"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "help": "The fastest way to reach us"
+      },
+      "email": {
+        "label": "Email",
+        "help": "Replies within an hour on weekdays"
+      },
+      "visit": {
+        "label": "Visit",
+        "help": "Walk-ins welcome — appointments preferred"
+      }
+    },
+    "form": {
+      "title": "Or send us a message",
+      "sub": "We'll get back to you during business hours, usually within an hour.",
+      "submit": "Send message"
+    },
+    "team": {
+      "title": "The people you'll talk to",
+      "sub": "When you call or visit, you'll speak to a real person — never a chatbot."
+    }
+  },
+"about": {
+    "hero": {
+      "eyebrow": "About us",
+      "headline": "Cyprus's most carefully selected lineup of premium cars.",
+      "sub": "Twelve years of buying and selling on the island. Around forty cars in stock at any given time — every one chosen, inspected, and approved by us before it goes on the floor."
+    },
+    "founder": {
+      "eyebrow": "The founder",
+      "title": "A note from Andreas",
+      "body": "I started Auto Cyprus in 2013 with one goal: build the most trusted name in premium cars on the island. Twelve years and three thousand customers later, that's still the standard we hold ourselves to. Every car we sell is one I'd be happy to drive home myself — and if a car doesn't meet that bar, it doesn't go on our lot.",
+      "signature": "Andreas P. — Founder"
+    },
+    "values": {
+      "title": "How we work",
+      "items": {
+        "honest": {
+          "title": "Full transparency on every car",
+          "body": "We document every detail — including the imperfections. Our walk-around video shows the small chip on the bumper too. We'd rather lose a sale than have you find a surprise on the day you collect."
+        },
+        "small": {
+          "title": "Quality over quantity",
+          "body": "We choose to keep our stock around forty cars, not two hundred. That's how we can personally vouch for every single one of them."
+        },
+        "longterm": {
+          "title": "Customers for life",
+          "body": "Most of our customers come back when it's time for the next car, or send a friend or relative. That kind of loyalty is the foundation of our business."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Our story",
+      "items": {
+        "one": {
+          "year": "2013",
+          "title": "Founded in Limassol",
+          "body": "Andreas opened the first showroom in Strovolos with seven cars and a clear vision: be the most trusted dealer on the island."
+        },
+        "two": {
+          "year": "2016",
+          "title": "Moved to our current showroom",
+          "body": "Relocated to a larger space on Leoforos Strovolou, with room for forty cars and a dedicated service bay."
+        },
+        "three": {
+          "year": "2019",
+          "title": "Island-wide delivery",
+          "body": "Started delivering across the island — Limassol, Larnaca, Paphos and Famagusta — same-day where possible."
+        },
+        "four": {
+          "year": "2022",
+          "title": "Three thousandth car sold",
+          "body": "A Tesla Model 3, sold to a returning customer in Limassol. Ten years of careful work paying off."
+        },
+        "five": {
+          "year": "Today",
+          "title": "The standard for premium cars in Cyprus.",
+          "body": "Around forty cars on the lot. About eight people on the team. The same standards as day one."
+        }
+      }
+    },
+    "team": {
+      "title": "Meet the team"
+    }
+  },
+  "seo": {
+    "default": {
+      "title": "Auto Cyprus — Quality cars in Limassol",
+      "description": "A small, family-run car dealer in Limassol, Cyprus. Around forty quality cars in stock at a time, fully inspected, with delivery across the island."
+    },
+    "cars": {
+      "title": "Our cars — Auto Cyprus",
+      "description": "Browse our current selection of quality cars in Cyprus. Filter by brand, body type, fuel, and price."
+    },
+    "sell": {
+      "title": "Sell your car — Auto Cyprus",
+      "description": "Sell your car directly to Auto Cyprus. Fair offer in 24 hours, paid on the spot, all paperwork handled."
+    },
+    "contact": {
+      "title": "Contact — Auto Cyprus",
+      "description": "Visit our showroom in Limassol, or get in touch by phone, WhatsApp, or email."
+    },
+    "about": {
+      "title": "About — Auto Cyprus",
+      "description": "Twelve years selling quality cars in Cyprus. Around forty cars at a time, just the way we like it."
+    }
+  }
+}

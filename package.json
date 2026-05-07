@@ -1,0 +1,48 @@
+{
+  "name": "auto-cyprus",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.9.0",
+    "pnpm": ">=9"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap",
+    "payload": "payload"
+  },
+"dependencies": {
+  "@payloadcms/db-mongodb": "3.84.1",
+  "@payloadcms/next": "3.84.1",
+  "@payloadcms/richtext-lexical": "3.84.1",
+  "@payloadcms/storage-s3": "3.84.1",
+  "@payloadcms/ui": "3.84.1",
+  "clsx": "^2.1.1",
+  "framer-motion": "^11.11.0",
+  "graphql": "^16.9.0",
+  "next": "16.2.4",
+  "next-intl": "^3.21.0",
+  "payload": "3.84.1",
+  "react": "19.2.0",
+  "react-dom": "19.2.0",
+  "resend": "^4.0.0",
+  "sharp": "^0.33.5",
+  "slugify": "^1.6.6",
+  "tailwind-merge": "^2.5.4",
+  "zod": "^3.23.8"
+},
+"devDependencies": {
+  "@tailwindcss/postcss": "^4.0.0",
+  "@types/node": "^22.7.0",
+  "@types/react": "19.2.0",
+  "@types/react-dom": "19.2.0",
+  "postcss": "^8.4.47",
+  "sass": "^1.99.0",
+  "tailwindcss": "^4.0.0",
+  "typescript": "^5.6.0"
+}
+}

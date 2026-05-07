@@ -1,0 +1,781 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Auto Cyprus — Design tokens
+   Editorial, restrained, premium. Hairlines, not boxes.
+   ============================================================ */
+
+@theme {
+  /* Core palette — warmed off-black, bone, with a single ochre accent.
+     Avoiding pure #000 / #fff. Bone (#f7f6f1) reads warm and a little
+     paper-like, the way magazine stock does. Ink (#0e1116) has just
+     enough blue undertone to sit comfortably next to bone without
+     vibrating the way pure black does. */
+  --color-ink: #0e1116;
+  --color-ink-soft: #1a1d22;
+  --color-ink-mid: #2a2e34;
+  --color-graphite: #6b6f78;
+  --color-mist: #a1a4ac;
+  --color-fog: #d8d6cc;
+  --color-bone: #f7f6f1;
+  --color-bone-deep: #efece2;
+  --color-cream: #fbfaf6;
+  --color-rule: #1f242b;
+  --color-rule-light: #d8d6cc;
+
+  /* Auxiliary accents — used sparingly, only in the hero for now.
+     Cognac brass we already have; these add the leather-companion tones.
+     Oxblood: dark red — interior leather, badge piping, "1" on a dial.
+     Slate: cool blue-grey — dashboard panel, brushed aluminium trim. */
+  --color-oxblood: #6b2a26;
+  --color-oxblood-soft: #8a3530;
+  --color-slate: #3a4954;
+  --color-slate-soft: #586875;
+
+  /* Semantic */
+  --color-success: #1f6f4a;
+  --color-warning: #b88224;
+  --color-danger: #a23a2c;
+
+  /* Typography — Geist Sans for body, Instrument Serif for editorial display.
+     Both free. The serif does a lot of heavy lifting — the headlines, the
+     pull quotes, the "12 yrs" stats. The sans handles everything functional
+     (nav, buttons, specs, forms). */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, "Iowan Old Style", "Apple Garamond", Baskerville, "Times New Roman", serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale — designed around a 16px base, with generous display sizes.
+     The scale skips around (no strict modular ratio) because editorial
+     design needs a few decisive jumps, not a smooth gradient. */
+  --text-2xs: 0.6875rem;       /* 11px — eyebrows, tiny meta */
+  --text-xs: 0.75rem;          /* 12px — meta, labels */
+  --text-sm: 0.875rem;         /* 14px — secondary body */
+  --text-base: 1rem;           /* 16px — body */
+  --text-lg: 1.125rem;         /* 18px — lead paragraphs */
+  --text-xl: 1.375rem;         /* 22px — small headers */
+  --text-2xl: 1.75rem;         /* 28px — h3 */
+  --text-3xl: 2.25rem;         /* 36px — h2 */
+  --text-4xl: 3rem;            /* 48px — section display */
+  --text-5xl: 4rem;            /* 64px — hero on tablet */
+  --text-6xl: 5.5rem;          /* 88px — hero on desktop */
+  --text-7xl: 7rem;            /* 112px — extra-large display */
+
+  /* Layout */
+  --container-max: 1320px;
+  --container-narrow: 880px;
+  --container-text: 720px;
+
+  /* Spacing extras — Tailwind's default scale plus a few editorial-feeling values */
+  --spacing-section: 6rem;
+  --spacing-section-lg: 8rem;
+
+  /* Radii — small, restrained. Not a single rounded-2xl in this entire app. */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* Easings & durations */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-precise: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 450ms;
+}
+
+/* ============================================================
+   Base layer
+   ============================================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-rule-light);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    font-size: var(--text-base);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-bone);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Forms — strip browser opinions, we provide our own */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Hide the noise that browsers add to number inputs */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+/* ============================================================
+   Utilities — editorial helpers
+   ============================================================ */
+
+/* Containers */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: var(--container-max);
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility container-narrow {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: var(--container-narrow);
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility container-text {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: var(--container-text);
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Display type — Instrument Serif at very tight tracking and tight leading.
+   This is the magazine voice. Reserved for hero/section headlines. */
+@utility display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.022em;
+  line-height: 0.96;
+}
+
+@utility display-italic {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.022em;
+  line-height: 0.96;
+}
+
+/* Eyebrow — the all-caps, wide-tracked label that sits above section
+   headlines. Keep the size tiny (11–12px), the letter-spacing wide.
+   Used everywhere as the calling card of editorial design. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+@utility eyebrow-on-dark {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-mist);
+}
+
+/* Hairline — a single 1px rule in the rule-light tone.
+   We use these instead of borders on cards. */
+@utility hairline {
+  border-top: 1px solid var(--color-rule-light);
+}
+
+@utility hairline-dark {
+  border-top: 1px solid var(--color-rule);
+}
+
+/* Spec table style — used in CarDetail spec rows. Aligned by the
+   classic two-column "definition list" format with hairlines between. */
+@utility spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding-block: 0.875rem;
+  border-top: 1px solid var(--color-rule-light);
+  font-size: var(--text-sm);
+}
+
+/* Subtle paper texture for dark sections — adds the slightest amount
+   of warm noise so the dark blocks don't feel like flat CSS rectangles.
+   Implemented as an SVG noise pattern. Pure CSS, no images. */
+@utility paper {
+  background-color: var(--color-ink);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 0.92  0 0 0 0 0.91  0 0 0 0 0.88  0 0 0 0.025 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+  background-blend-mode: screen;
+}
+
+/* Editorial first-letter — drop cap for long-form text */
+@utility drop-cap {
+  &::first-letter {
+    font-family: var(--font-serif);
+    font-size: 4em;
+    line-height: 0.85;
+    float: left;
+    padding: 0.1em 0.1em 0 0;
+    color: var(--color-ink);
+  }
+}
+
+/* CTA underline — animated underline on hover, the way newspaper links work */
+@utility link-rule {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  transition: opacity var(--duration-fast) var(--ease-precise);
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Number ticker — used on stats. Aligns the number flush, big serif,
+   with the label tiny underneath. */
+@utility big-stat {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+/* Tab bar bottom safe area for sticky elements */
+@utility safe-bottom {
+  padding-bottom: max(env(safe-area-inset-bottom), 0px);
+}
+
+/* Aspect ratios — the magazine ones, not the SaaS ones */
+@utility aspect-portrait {
+  aspect-ratio: 4 / 5;
+}
+@utility aspect-cinema {
+  aspect-ratio: 16 / 9;
+}
+@utility aspect-letterbox {
+  aspect-ratio: 21 / 9;
+}
+@utility aspect-square-tall {
+  aspect-ratio: 5 / 6;
+}
+
+/* Buttons — base shapes. Real button component lives in /components/ui */
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.875rem 1.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-precise);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-height: 44px;
+}
+
+/* ============================================================
+   Animations — keyframes
+   ============================================================ */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes ticker-rotate {
+  0%, 25% {
+    transform: translateY(0);
+  }
+  33%, 58% {
+    transform: translateY(-100%);
+  }
+  66%, 91% {
+    transform: translateY(-200%);
+  }
+  100% {
+    transform: translateY(-300%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes draw-rule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes draw-stamp {
+  from {
+    transform: rotate(-12deg) scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-8deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes draw-signature {
+  from {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes cycle-words {
+  0%, 28% {
+    transform: translateY(0%);
+  }
+  33%, 61% {
+    transform: translateY(-33.333%);
+  }
+  66%, 94% {
+    transform: translateY(-66.666%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+/* ============================================================
+   Animations — utilities
+   ============================================================ */
+
+@utility anim-fade-up {
+  animation: fade-up 0.6s var(--ease-editorial) both;
+}
+
+@utility anim-fade-in {
+  animation: fade-in 0.6s var(--ease-editorial) both;
+}
+
+@utility anim-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+@utility animate-marquee {
+  animation: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+/* Staggered animation delays via custom property */
+@utility anim-stagger {
+  animation-delay: calc(var(--stagger, 0) * 80ms);
+}
+
+/* Skeleton shimmer for loading states */
+@utility skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-fog) 0%,
+    var(--color-bone-deep) 50%,
+    var(--color-fog) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Pulsing glow — used by LiveDot */
+@utility animate-ping-slow {
+  animation: ping-slow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Floating element (very subtle bob) */
+@utility animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Slow rotation (used on the rotating brass medallion) */
+@utility animate-spin-slow {
+  animation: spin-slow 30s linear infinite;
+}
+
+/* Draw-in horizontal rule, animates from left */
+@utility draw-rule {
+  transform-origin: left;
+  animation: draw-rule 1.2s var(--ease-editorial) both;
+}
+
+/* Stamp animation — used on the certificate seal in the hero */
+@utility anim-stamp {
+  animation: draw-stamp 800ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: 1.4s;
+}
+
+/* ============================================================
+   Component-specific styles
+   ============================================================ */
+
+/* Mobile filter sheet backdrop */
+.filter-backdrop {
+  background: rgba(14, 17, 22, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+/* The signature mark. Auto // Cyprus — the double slash is part
+   of the brand. We render it inline in the Logo component, but
+   the typographic treatment is here. */
+.brand-mark {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: var(--text-base);
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.brand-mark .slash {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+  font-size: 1.1em;
+  line-height: 0.8;
+  position: relative;
+  top: 0.05em;
+}
+
+/* Signature SVG — handwritten signature drawn in. Applied as a class
+   to the wrapping element so the descendant <path> can be targeted.
+   Tailwind v4 @utility blocks don't support descendant selectors, so
+   this stays as a plain class. */
+.anim-signature path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-signature 2.5s ease-out forwards;
+  animation-delay: 1.8s;
+}
+
+/* Rich text content — used in car descriptions. Restrained, no boxes. */
+.prose-editorial {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  max-width: 65ch;
+}
+
+.prose-editorial > * + * {
+  margin-top: 1em;
+}
+
+.prose-editorial h2 {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  color: var(--color-ink);
+}
+
+.prose-editorial h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+  color: var(--color-graphite);
+}
+
+.prose-editorial p {
+  margin-block: 0.9em;
+}
+
+.prose-editorial a {
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-precise);
+}
+
+.prose-editorial a:hover {
+  opacity: 0.7;
+}
+
+.prose-editorial ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose-editorial ul > li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.prose-editorial ul > li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+}
+
+/* The signature horizontal index numerals — used to number sections
+   like "01 / How we work". Editorial trick. */
+.index-numeral {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--color-graphite);
+  letter-spacing: 0;
+}
+
+/* Grain over photo frame — used on hero photos and card hover states */
+.image-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(14, 17, 22, 0.18) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Sold/reserved corner stamp on car cards */
+.corner-stamp {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  padding: 0.4rem 0.7rem;
+  font-size: var(--text-2xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.corner-stamp-sold {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.corner-stamp-reserved {
+  background: var(--color-accent);
+  color: var(--color-bone);
+}
+
+/* Reveal-on-hover line — for editorial card hover states.
+   The line appears under a heading on hover, drawn from left to right. */
+.reveal-rule {
+  position: relative;
+}
+
+.reveal-rule::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--ease-editorial);
+}
+
+.group:hover .reveal-rule::after,
+.reveal-rule:hover::after {
+  transform: scaleX(1);
+}
+
+/* Light grain overlay for hero photos — adds the slightest amount of
+   film grain on top of imagery so it doesn't look digital-flat. */
+.film-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* Editorial number ticker — large display numerals with a tabular feel */
+.tabular-nums {
+  font-feature-settings: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* The vertical cycling text — used in the hero "we sell ___" rotating word */
+.vertical-cycle {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 1em;
+  overflow: hidden;
+  position: relative;
+}
+
+.vertical-cycle > .track {
+  display: block;
+  animation: cycle-words 9s steps(3, end) infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes draw-frame {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@utility anim-pulse-soft {
+  animation: pulse-soft 2.4s ease-in-out infinite;
+}
+
+@utility anim-draw-frame {
+  animation: draw-frame 1.4s var(--ease-editorial) both;
+}
