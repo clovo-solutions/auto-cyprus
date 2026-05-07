@@ -87,12 +87,12 @@ export async function POST(req: NextRequest) {
   // Persist
   try {
     const payload = await getPayloadClient();
-    let carRef: number | string | undefined;
+    let carRef: string | undefined;
     let carTitle: string | undefined;
 
     if (data.type === 'car' && (data.carId || data.carSlug)) {
       if (data.carId) {
-        carRef = data.carId;
+        carRef = String(data.carId);
       } else if (data.carSlug) {
         const result = await payload.find({
           collection: 'cars',
@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
         });
         const first = result.docs[0];
         if (first) {
-          carRef = first.id;
+          carRef = String(first.id);
           carTitle = (first as Car).title;
         }
       }
