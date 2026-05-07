@@ -18,6 +18,15 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60 * 60 * 24 * 30,
+    localPatterns: [
+      {
+        pathname: '/api/media/file/**',
+        search: '**',
+      },
+      {
+        pathname: '/media/**',
+      },
+    ],
     remotePatterns: [
       {
         protocol: 'https',
