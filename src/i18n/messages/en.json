@@ -263,7 +263,19 @@
     "hero": {
       "eyebrow": "Sell to us",
       "headline": "A simple, hassle-free way to sell your car.",
-      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door."
+      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door.",
+      "cta": "Get a free offer",
+      "secondaryCta": "Ask on WhatsApp",
+      "badge1": "Free valuation",
+      "badge2": "No commitment",
+      "badge3": "Reply within 24 hours"
+    },
+    "midCta": {
+      "eyebrow": "Quick response",
+      "title": "Ready to sell?",
+      "sub": "WhatsApp or call us — we reply within the hour.",
+      "whatsapp": "Message on WhatsApp",
+      "phone": "Call the showroom"
     },
     "pitch": {
       "title": "Why sell to us instead of advertising privately",
