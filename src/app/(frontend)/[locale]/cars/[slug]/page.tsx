@@ -75,23 +75,17 @@ export async function generateMetadata({
 }
 
 function getGalleryImages(car: Car): Array<{ url: string; heroUrl?: string | null; alt: string }> {
-  return (car.images ?? [])
-    .map((entry) => {
-      const image = entry.image;
-      if (!image || typeof image !== 'object') {
-        return null;
-      }
-      const baseUrl = image.url;
-      if (!baseUrl) {
-        return null;
-      }
-      const sizes = (image as Media).sizes;
-      const heroUrl = sizes?.hero?.url || baseUrl;
-      const cardUrl = sizes?.card?.url || baseUrl;
-      const alt = entry.alt || image.alt || car.title || 'Car photo';
-      return { url: cardUrl, heroUrl, alt };
-    })
-    .filter((x): x is { url: string; heroUrl?: string | null; alt: string } => x !== null);
+  return (car.images ?? []).flatMap((entry) => {
+    const image = entry.image;
+    if (!image || typeof image !== 'object') return [];
+    const baseUrl = image.url;
+    if (!baseUrl) return [];
+    const sizes = (image as Media).sizes;
+    const heroUrl = sizes?.hero?.url || baseUrl;
+    const cardUrl = sizes?.card?.url || baseUrl;
+    const alt = entry.alt || image.alt || car.title || 'Car photo';
+    return [{ url: cardUrl, heroUrl, alt }];
+  });
 }
 
 function renderRichText(node: unknown): string {
