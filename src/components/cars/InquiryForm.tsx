@@ -110,26 +110,25 @@ export function InquiryForm({ token, carId, carSlug, type }: InquiryFormProps) {
         />
       </Field>
 
-      <div className="grid sm:grid-cols-2 gap-5">
-        <Field label={t('fields.phone')} htmlFor="inq-phone">
-          <Input
-            id="inq-phone"
-            type="tel"
-            autoComplete="tel"
-            value={state.phone}
-            onChange={(e) => update({ phone: e.target.value })}
-          />
-        </Field>
-        <Field label={t('fields.email')} htmlFor="inq-email" optional>
-          <Input
-            id="inq-email"
-            type="email"
-            autoComplete="email"
-            value={state.email}
-            onChange={(e) => update({ email: e.target.value })}
-          />
-        </Field>
-      </div>
+      <Field label={t('fields.phone')} htmlFor="inq-phone">
+        <Input
+          id="inq-phone"
+          type="tel"
+          autoComplete="tel"
+          value={state.phone}
+          onChange={(e) => update({ phone: e.target.value })}
+        />
+      </Field>
+
+      <Field label={t('fields.email')} htmlFor="inq-email" optional>
+        <Input
+          id="inq-email"
+          type="email"
+          autoComplete="email"
+          value={state.email}
+          onChange={(e) => update({ email: e.target.value })}
+        />
+      </Field>
 
       <Field label={t('fields.message')} htmlFor="inq-message" optional>
         <Textarea

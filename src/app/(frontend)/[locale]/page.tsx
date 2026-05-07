@@ -8,7 +8,6 @@ import { FeaturedCars } from '@/components/home/FeaturedCars';
 import { HowItWorks } from '@/components/home/HowItWorks';
 import { Categories } from '@/components/home/Categories';
 import { CustomerWall } from '@/components/home/CustomerWall';
-import { CtaBand } from '@/components/home/CtaBand';
 import { getInventoryCount } from '@/lib/cars';
 
 export const revalidate = 600;
@@ -35,7 +34,6 @@ export default async function HomePage({
       <HowItWorks locale={locale} />
       <Categories locale={locale} />
       <CustomerWall locale={locale} />
-      <CtaBand locale={locale} />
     </>
   );
 }

@@ -23,14 +23,14 @@ interface TeamMember {
 
 const team: TeamMember[] = [
   {
-    name: 'Andreas Petrou',
+    name: 'Viacheslav',
     role: 'Founder · Sales',
     image:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=900',
     blurb:
       'Twelve years in. Knows every car on the floor by smell, sound, and history. The buck stops here.',
     joined: '2013',
-    languages: ['Greek', 'English'],
+    languages: ['Russian', 'English'],
     quote:
       'We could stock two hundred cars. We don’t — because then we’d stop knowing them.',
   },

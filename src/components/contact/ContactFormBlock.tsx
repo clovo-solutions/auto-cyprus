@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Container } from '@/components/ui/Section';
+import { Reveal } from '@/components/motion/Reveal';
 import { InquiryForm } from '@/components/cars/InquiryForm';
 import { issueToken } from '@/lib/inquiryToken';
 import { PhoneIcon, WhatsappIcon, MailIcon, MapPinIcon } from '@/components/icons';
@@ -46,17 +47,20 @@ export async function ContactFormBlock({ locale }: ContactFormBlockProps) {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 xl:gap-20 items-start">
           {/* Left side — context, contacts, response time */}
           <aside className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col gap-10">
-            <div className="flex flex-col gap-3">
-              <span className="eyebrow text-graphite">{aside.eyebrow}</span>
-              <h2 className="display text-3xl md:text-4xl lg:text-5xl tracking-tight text-balance">
-                {aside.title}
-              </h2>
-              <p className="text-graphite text-pretty max-w-prose mt-2">
-                {aside.body}
-              </p>
-            </div>
+            <Reveal>
+              <div className="flex flex-col gap-3">
+                <span className="eyebrow text-graphite">{aside.eyebrow}</span>
+                <h2 className="display text-3xl md:text-4xl lg:text-5xl tracking-tight text-balance">
+                  {aside.title}
+                </h2>
+                <p className="text-graphite text-pretty max-w-prose mt-2">
+                  {aside.body}
+                </p>
+              </div>
+            </Reveal>
 
             {/* Quick-contact list */}
+            <Reveal delay={0.15}>
             <ul className="flex flex-col gap-px bg-rule-light">
               <li>
                 <a
@@ -127,18 +131,21 @@ export async function ContactFormBlock({ locale }: ContactFormBlockProps) {
                 </a>
               </li>
             </ul>
+            </Reveal>
 
             {/* Response time chip */}
-            <div className="hairline pt-5 flex items-center justify-between gap-4">
-              <span className="text-2xs uppercase tracking-[0.22em] text-graphite">
-                {aside.replyEyebrow}
-              </span>
-              <span className="text-sm text-ink-soft text-right">{aside.replyTime}</span>
-            </div>
+            <Reveal delay={0.25}>
+              <div className="hairline pt-5 flex items-center justify-between gap-4">
+                <span className="text-2xs uppercase tracking-[0.22em] text-graphite">
+                  {aside.replyEyebrow}
+                </span>
+                <span className="text-sm text-ink-soft text-right">{aside.replyTime}</span>
+              </div>
+            </Reveal>
           </aside>
 
           {/* Right side — the form, on its own card */}
-          <div className="lg:col-span-7">
+          <Reveal delay={0.2} className="lg:col-span-7">
             <div className="bg-bone p-7 md:p-10 lg:p-12 border-t-2 border-ink shadow-[0_2px_24px_rgba(14,17,22,0.04)]">
               <div className="flex flex-col gap-3 mb-8">
                 <span className="eyebrow text-graphite">
@@ -150,7 +157,7 @@ export async function ContactFormBlock({ locale }: ContactFormBlockProps) {
 
               <InquiryForm token={token} type="contact" />
             </div>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

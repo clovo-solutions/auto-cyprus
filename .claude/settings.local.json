@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(~/.nvm/versions/node/v20.10.0/bin/node ./node_modules/.pnpm/payload@3.84.1_graphql@16.13.2_typescript@5.9.3/node_modules/payload/bin.js generate:types)",
+      "Bash(find \"/Users/alex/Downloads/auto-cyprus \\(1\\)/node_modules/.pnpm/payload@3.84.1\"* -name \"generateTypes*\")",
+      "Bash(~/.nvm/versions/node/v20.19.0/bin/node --require ./scripts/preload-undici.cjs ./node_modules/.pnpm/payload@3.84.1_graphql@16.13.2_typescript@5.9.3/node_modules/payload/bin.js generate:types)",
+      "Bash(pnpm install *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(find \"/Users/alex/Downloads/auto-cyprus \\(1\\)/node_modules/.pnpm/next@16.2.4\"* -name \"*.d.ts\")"
     ]
   }
 }

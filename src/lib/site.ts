@@ -1,19 +1,15 @@
-function envString(key: string, fallback = ''): string {
-  const value = process.env[key];
-  if (value === undefined || value === null || value.trim() === '') {
-    return fallback;
-  }
-  return value.trim();
+function trimOrFallback(value: string | undefined, fallback: string): string {
+  return value && value.trim() !== '' ? value.trim() : fallback;
 }
 
 export const site = {
   name: 'Auto Cyprus',
   shortName: 'Auto // Cyprus',
-  url: envString('NEXT_PUBLIC_SITE_URL', 'http://localhost:3000'),
-  phone: envString('NEXT_PUBLIC_PHONE', '+35795149488'),
-  whatsapp: envString('NEXT_PUBLIC_WHATSAPP', '+35795149488'),
-  email: envString('NEXT_PUBLIC_EMAIL', 'hello@autocyprus.example'),
-  address: envString('NEXT_PUBLIC_ADDRESS', 'Limassol, Cyprus'),
+  url: trimOrFallback(process.env.NEXT_PUBLIC_SITE_URL, 'http://localhost:3000'),
+  phone: trimOrFallback(process.env.NEXT_PUBLIC_PHONE, '+35795149488'),
+  whatsapp: trimOrFallback(process.env.NEXT_PUBLIC_WHATSAPP, '+35795149488'),
+  email: trimOrFallback(process.env.NEXT_PUBLIC_EMAIL, 'hello@autocyprus.example'),
+  address: trimOrFallback(process.env.NEXT_PUBLIC_ADDRESS, 'Pafou 57, Limassol 3051, Cyprus'),
   geo: {
     lat: 35.1856,
     lng: 33.3823,

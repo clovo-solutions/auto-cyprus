@@ -223,6 +223,30 @@ export async function findAllCarSlugs(): Promise<string[]> {
   )();
 }
 
+export async function findBodyTypeCounts(): Promise<Record<string, number>> {
+  return unstable_cache(
+    async () => {
+      const payload = await getPayloadClient();
+      const result = await payload.find({
+        collection: 'cars',
+        where: { status: { equals: 'available' } },
+        limit: 1000,
+        depth: 0,
+        select: { bodyType: true },
+      });
+      const counts: Record<string, number> = {};
+      for (const car of result.docs) {
+        if (car.bodyType) {
+          counts[car.bodyType] = (counts[car.bodyType] ?? 0) + 1;
+        }
+      }
+      return counts;
+    },
+    ['body-type-counts'],
+    { tags: [TAG_CARS_INDEX, TAG_INVENTORY_COUNT], revalidate: 300 },
+  )();
+}
+
 export async function resolveCar(
   locale: Locale,
   slug: string,

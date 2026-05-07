@@ -57,9 +57,9 @@ const customers: RawCustomer[] = [
     car: 'Tesla Model 3',
     purchasedAt: { en: 'Sep 2023', gr: 'Σεπ 2023', ru: 'Сен 2023' },
     quote: {
-      en: 'Andreas spent two hours walking me through the car. Twice. I never once felt rushed.',
-      gr: 'Ο Ανδρέας πέρασε δύο ώρες δείχνοντάς μου το αυτοκίνητο. Δύο φορές. Ποτέ δεν ένιωσα ότι βιάστηκα.',
-      ru: 'Андреас потратил два часа, показывая мне машину. Дважды. Ни разу не торопил.',
+      en: 'Viacheslav spent two hours walking me through the car. Twice. I never once felt rushed.',
+      gr: 'Ο Βιατσεσλάβ πέρασε δύο ώρες δείχνοντάς μου το αυτοκίνητο. Δύο φορές. Ποτέ δεν ένιωσα ότι βιάστηκα.',
+      ru: 'Вячеслав потратил два часа, показывая мне машину. Дважды. Ни разу не торопил.',
     },
   },
   // ── Added to fill three columns ────────────────────────────────────────────

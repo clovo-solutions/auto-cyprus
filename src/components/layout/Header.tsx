@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { Link, usePathname } from '@/i18n/navigation';
 // import { Container } from '@/components/ui/Section';
 import { Logo } from './Logo';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
@@ -25,6 +25,7 @@ const items = [
 
 export function Header({ locale: _locale }: HeaderProps) {
   const t = useTranslations('nav');
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -57,19 +58,28 @@ export function Header({ locale: _locale }: HeaderProps) {
           </div>
 
           <nav aria-label="Main" className="hidden md:flex items-center gap-9 text-sm">
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="group relative text-ink hover:text-ink transition-colors duration-150 tracking-wide py-1"
-              >
-                <span>{t(item.key)}</span>
-                <span
-                  className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent scale-x-0 origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
-                  aria-hidden="true"
-                />
-              </Link>
-            ))}
+            {items.map((item) => {
+              const isActive = pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group relative text-ink hover:text-ink transition-colors duration-150 tracking-wide py-1"
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <span>{t(item.key)}</span>
+                  <span
+                    className={cn(
+                      'absolute -bottom-0.5 left-0 right-0 h-px origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                      isActive
+                        ? 'bg-ink scale-x-100'
+                        : 'bg-accent scale-x-0 group-hover:scale-x-100',
+                    )}
+                    aria-hidden="true"
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden md:flex items-center gap-6">

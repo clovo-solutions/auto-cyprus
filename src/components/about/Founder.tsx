@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Section';
+import { Reveal } from '@/components/motion/Reveal';
 import type { Locale } from '@/i18n/config';
 
 interface FounderProps {
@@ -14,7 +15,7 @@ export async function Founder({ locale }: FounderProps) {
     <section className="bg-bone py-20 md:py-32">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5 lg:order-2">
+          <Reveal delay={0.2} className="lg:col-span-5 lg:order-2">
             <div className="image-frame relative aspect-portrait bg-fog/40 overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=900"
@@ -24,8 +25,8 @@ export async function Founder({ locale }: FounderProps) {
                 className="object-cover"
               />
             </div>
-          </div>
-          <div className="lg:col-span-7 lg:order-1">
+          </Reveal>
+          <Reveal className="lg:col-span-7 lg:order-1">
             <span className="eyebrow text-graphite mb-4 block">{t('eyebrow')}</span>
             <h2 className="display text-3xl md:text-4xl lg:text-5xl tracking-tight text-balance leading-tight">
               {t('title')}
@@ -36,7 +37,7 @@ export async function Founder({ locale }: FounderProps) {
             <p className="mt-8 text-2xs uppercase tracking-[0.18em] text-graphite">
               — {t('signature')}
             </p>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

@@ -263,19 +263,7 @@
     "hero": {
       "eyebrow": "Sell to us",
       "headline": "A simple, hassle-free way to sell your car.",
-      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door.",
-      "cta": "Get a free valuation",
-      "secondaryCta": "WhatsApp us first",
-      "badge1": "Free valuation",
-      "badge2": "No obligation",
-      "badge3": "Response within 24 hours"
-    },
-    "midCta": {
-      "eyebrow": "Quick response",
-      "title": "Ready to sell?",
-      "sub": "WhatsApp or call the showroom — we'll get back to you within the hour.",
-      "whatsapp": "Message on WhatsApp",
-      "phone": "Call the showroom"
+      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door."
     },
     "pitch": {
       "title": "Why sell to us instead of advertising privately",
@@ -380,9 +368,9 @@
     },
     "founder": {
       "eyebrow": "The founder",
-      "title": "A note from Andreas",
+      "title": "A note from Viacheslav",
       "body": "I started Auto Cyprus in 2013 with one goal: build the most trusted name in premium cars on the island. Twelve years and three thousand customers later, that's still the standard we hold ourselves to. Every car we sell is one I'd be happy to drive home myself — and if a car doesn't meet that bar, it doesn't go on our lot.",
-      "signature": "Andreas P. — Founder"
+      "signature": "Viacheslav — Founder"
     },
     "values": {
       "title": "How we work",
@@ -407,12 +395,12 @@
         "one": {
           "year": "2013",
           "title": "Founded in Limassol",
-          "body": "Andreas opened the first showroom in Strovolos with seven cars and a clear vision: be the most trusted dealer on the island."
+          "body": "Viacheslav opened the first showroom in Strovolos with seven cars and a clear vision: be the most trusted dealer on the island."
         },
         "two": {
           "year": "2016",
           "title": "Moved to our current showroom",
-          "body": "Relocated to a larger space on Leoforos Strovolou, with room for forty cars and a dedicated service bay."
+          "body": "Relocated to a larger space at Pafou 57, Limassol, with room for forty cars and a dedicated service bay."
         },
         "three": {
           "year": "2019",

@@ -5,6 +5,7 @@ import { Container, Section } from '@/components/ui/Section';
 import { SectionHeader } from '@/components/SectionHeader';
 import { ArrowUpRightIcon } from '@/components/icons';
 import { Reveal } from '@/components/motion/Reveal';
+import { findBodyTypeCounts } from '@/lib/cars';
 import type { Locale } from '@/i18n/config';
 
 interface CategoriesProps {
@@ -16,7 +17,6 @@ interface CategoryEntry {
   body: string;
   image: string;
   caption: Record<Locale, string>;
-  count: number;
   hero?: boolean;
 }
 
@@ -31,7 +31,6 @@ const categories: CategoryEntry[] = [
       gr: 'Για το σχολείο, τον ορεινό δρόμο, και ό,τι υπάρχει ενδιάμεσα.',
       ru: 'Для школы, горной дороги — и всего, что между ними.',
     },
-    count: 14,
     hero: true,
   },
   {
@@ -44,7 +43,6 @@ const categories: CategoryEntry[] = [
       gr: 'Ήσυχα, σκεπτικά, χωρίς υπερβολές.',
       ru: 'Тихие, продуманные, без излишеств.',
     },
-    count: 9,
   },
   {
     key: 'coupe',
@@ -56,7 +54,6 @@ const categories: CategoryEntry[] = [
       gr: 'Δύο πόρτες. Μία γνώμη.',
       ru: 'Две двери. Одно мнение.',
     },
-    count: 6,
   },
   {
     key: 'convertible',
@@ -68,16 +65,23 @@ const categories: CategoryEntry[] = [
       gr: 'Η Κύπρος έχει εποχή ανοιχτής οροφής περίπου τρεις εβδομάδες. Αξιοποιήστε τες.',
       ru: 'У Кипра сезон с открытой крышей — недели три. Не упустите.',
     },
-    count: 4,
   },
 ];
 
 export async function Categories({ locale }: CategoriesProps) {
-  const t = await getTranslations({ locale, namespace: 'home.categories' });
+  const [t, counts] = await Promise.all([
+    getTranslations({ locale, namespace: 'home.categories' }),
+    findBodyTypeCounts(),
+  ]);
   const tCount = locale === 'gr' ? 'στη συλλογή' : locale === 'ru' ? 'в наличии' : 'in stock';
 
   const hero = categories.find((c) => c.hero)!;
   const rest = categories.filter((c) => !c.hero);
+
+  const countLabel = (entry: CategoryEntry) => {
+    const n = counts[entry.body] ?? 0;
+    return n > 0 ? `${n} ${tCount}` : null;
+  };
 
   return (
     <Section tone="bone" spacing="lg">
@@ -111,7 +115,7 @@ export async function Categories({ locale }: CategoriesProps) {
               entry={hero}
               caption={hero.caption[locale]}
               label={t(`items.${hero.key}`)}
-              countLabel={`${hero.count} ${tCount}`}
+              countLabel={countLabel(hero)}
               hero
             />
           </Reveal>
@@ -122,7 +126,7 @@ export async function Categories({ locale }: CategoriesProps) {
               entry={rest[0]!}
               caption={rest[0]!.caption[locale]}
               label={t(`items.${rest[0]!.key}`)}
-              countLabel={`${rest[0]!.count} ${tCount}`}
+              countLabel={countLabel(rest[0]!)}
             />
           </Reveal>
 
@@ -132,7 +136,7 @@ export async function Categories({ locale }: CategoriesProps) {
               entry={rest[1]!}
               caption={rest[1]!.caption[locale]}
               label={t(`items.${rest[1]!.key}`)}
-              countLabel={`${rest[1]!.count} ${tCount}`}
+              countLabel={countLabel(rest[1]!)}
             />
           </Reveal>
           <Reveal delay={0.26} className="lg:col-span-2 lg:row-span-1">
@@ -140,7 +144,7 @@ export async function Categories({ locale }: CategoriesProps) {
               entry={rest[2]!}
               caption={rest[2]!.caption[locale]}
               label={t(`items.${rest[2]!.key}`)}
-              countLabel={`${rest[2]!.count} ${tCount}`}
+              countLabel={countLabel(rest[2]!)}
               compact
               minimal
             />
@@ -155,7 +159,7 @@ interface CategoryTileProps {
   entry: CategoryEntry;
   label: string;
   caption: string;
-  countLabel: string;
+  countLabel: string | null;
   hero?: boolean;
   compact?: boolean;
   minimal?: boolean;
@@ -174,7 +178,7 @@ function CategoryTile({
     <Link
       href={`/cars?body=${entry.body}`}
       className="group relative block image-frame h-full min-h-[280px] overflow-hidden bg-ink/5"
-      aria-label={`${label} — ${countLabel}`}
+      aria-label={countLabel ? `${label} — ${countLabel}` : label}
     >
       <Image
         src={entry.image}
@@ -205,7 +209,7 @@ function CategoryTile({
         className="absolute right-0 bottom-0 w-px h-0 bg-accent transition-[height] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:h-full"
       />
 
-      {!minimal ? (
+      {!minimal && countLabel ? (
         <span className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 bg-bone/95 backdrop-blur-sm text-ink px-2.5 py-1 text-2xs uppercase tracking-[0.18em] tabular-nums">
           <span className="block w-1 h-1 rounded-full bg-success" aria-hidden="true" />
           <span>{countLabel}</span>

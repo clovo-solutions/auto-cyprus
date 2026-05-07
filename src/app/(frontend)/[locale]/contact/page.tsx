@@ -4,9 +4,11 @@ import type { Metadata } from 'next';
 import { isLocale, type Locale } from '@/i18n/config';
 import { Container, Section } from '@/components/ui/Section';
 import { SectionHeader } from '@/components/SectionHeader';
+import { Reveal } from '@/components/motion/Reveal';
+import { SplitReveal } from '@/components/motion/SplitReveal';
 import { ShowroomMap } from '@/components/contact/ShowroomMap';
 import { ContactFormBlock } from '@/components/contact/ContactFormBlock';
-import { PhoneIcon, WhatsappIcon, MailIcon, MapPinIcon, ArrowUpRightIcon } from '@/components/icons';
+import { PhoneIcon, WhatsappIcon, MailIcon, MapPinIcon } from '@/components/icons';
 import { phoneHref, emailHref, whatsappHref, mapsHref, site } from '@/lib/site';
 import { buildAlternates } from '@/lib/seo';
 
@@ -85,56 +87,83 @@ export default async function ContactPage({
         <Container>
           <div className="grid lg:grid-cols-12 gap-12 items-end">
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="block w-12 h-px bg-ink" aria-hidden="true" />
-                <span className="eyebrow">{t('hero.eyebrow')}</span>
-              </div>
+              <Reveal>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="block w-12 h-px bg-ink draw-rule" aria-hidden="true" />
+                  <span className="eyebrow">{t('hero.eyebrow')}</span>
+                </div>
+              </Reveal>
               <h1 className="display text-4xl md:text-6xl lg:text-7xl tracking-tight text-balance">
-                {t('hero.headline')}
+                <SplitReveal text={t('hero.headline')} delay={0.15} staggerChildren={0.04} />
               </h1>
-              <p className="mt-7 text-base md:text-lg text-graphite max-w-[44ch] text-pretty leading-relaxed">
-                {t('hero.sub')}
-              </p>
+              <Reveal delay={0.5}>
+                <p className="mt-7 text-base md:text-lg text-graphite max-w-[44ch] text-pretty leading-relaxed">
+                  {t('hero.sub')}
+                </p>
+              </Reveal>
             </div>
           </div>
         </Container>
       </section>
 
       {/* Map */}
-      <Container>
-        <ShowroomMap />
-      </Container>
+      <Reveal className="overflow-hidden">
+        <Container>
+          <ShowroomMap />
+        </Container>
+      </Reveal>
 
       {/* Contact tiles */}
       <Section tone="bone" spacing="md">
         <Container>
-          <SectionHeader
-            eyebrow="01 / Channels"
-            title="The fastest ways to reach us"
-            size="md"
-            className="mb-10"
-          />
+          <Reveal className="mb-10">
+            <SectionHeader
+              eyebrow="01 / Channels"
+              title="The fastest ways to reach us"
+              size="md"
+            />
+          </Reveal>
           <ul className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-rule-light">
-            {tiles.map((tile) => (
-              <li key={tile.label} className="bg-bone">
+            {tiles.map((tile, i) => (
+              <Reveal
+                key={tile.label}
+                delay={i * 0.1}
+                as="li"
+                className="bg-bone"
+              >
                 <a
                   href={tile.href}
                   target={tile.external ? '_blank' : undefined}
                   rel={tile.external ? 'noopener noreferrer' : undefined}
-                  className="block p-7 md:p-9 group hover:bg-cream transition-colors duration-200 h-full"
+                  className="group relative block p-8 md:p-10 overflow-hidden min-h-[280px] flex flex-col gap-5"
                 >
-                  <div className="flex items-start justify-between mb-6">
-                    <span className="text-ink">{tile.icon}</span>
-                    <ArrowUpRightIcon
-                      size={14}
-                      className="text-graphite group-hover:text-ink transition-colors"
-                    />
+                  {/* Index numeral */}
+                  <span
+                    className="absolute top-4 right-5 index-numeral text-mist text-sm group-hover:text-accent transition-colors duration-500"
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
+                  <span className="text-ink">{tile.icon}</span>
+
+                  <div>
+                    <p className="eyebrow text-graphite mb-3">{tile.label}</p>
+                    <p className="text-base text-ink break-words">{tile.value}</p>
+                    <p className="text-xs text-graphite mt-2">{tile.help}</p>
                   </div>
-                  <span className="eyebrow text-graphite block mb-2">{tile.label}</span>
-                  <p className="text-base text-ink mb-2 break-words">{tile.value}</p>
-                  <p className="text-xs text-graphite">{tile.help}</p>
+
+                  {/* Hairlines — top draws right→left, bottom draws left→right */}
+                  <span
+                    className="absolute top-0 left-0 h-px w-full bg-accent scale-x-0 origin-right transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                    aria-hidden="true"
+                  />
+                  <span
+                    className="absolute bottom-0 left-0 h-px w-full bg-accent scale-x-0 origin-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                    aria-hidden="true"
+                  />
                 </a>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </Container>

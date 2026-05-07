@@ -124,11 +124,11 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                 <span
                   aria-hidden="true"
                   className="absolute inset-0 rounded-full anim-pulse-soft"
-                  style={{ backgroundColor: 'var(--color-oxblood-soft)' }}
+                  style={{ backgroundColor: 'var(--color-live)' }}
                 />
                 <span
                   className="relative rounded-full w-1.5 h-1.5"
-                  style={{ backgroundColor: 'var(--color-oxblood-soft)' }}
+                  style={{ backgroundColor: 'var(--color-live)' }}
                   aria-hidden="true"
                 />
               </span>
