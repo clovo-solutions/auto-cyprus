@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import { buildAlternates } from '@/lib/seo';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SplashScreen } from '@/components/ui/SplashScreen';
 import { JsonLd } from '@/components/JsonLd';
 import { organizationJsonLd, autoDealerJsonLd } from '@/lib/seo-jsonld';
 
@@ -95,6 +96,7 @@ export default async function LocaleLayout({
     >
       <body className="min-h-screen bg-bone text-ink antialiased">
         <NextIntlClientProvider messages={messages}>
+          <SplashScreen />
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-bone"
