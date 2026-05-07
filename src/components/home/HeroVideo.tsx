@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { cn } from '@/lib/cn';
 
 interface HeroVideoProps {
@@ -26,22 +27,33 @@ export function HeroVideo({ sources, posterUrl, className, alt }: HeroVideoProps
     const playPromise = v.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
-        // Browser blocked autoplay; poster stays visible
+        // Browser blocked autoplay — poster image stays visible
       });
     }
   }, [reduced]);
 
   return (
     <div className={cn('relative w-full h-full overflow-hidden', className)}>
-      {reduced ? (
-        <img
-          src={posterUrl}
-          alt={alt}
-          fetchPriority="high"
-          loading="eager"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      ) : (
+      {/*
+       * Poster delivered through Next.js image optimisation:
+       * - Converts hero.jpg (3.2 MB) → AVIF/WebP (typically < 100 KB)
+       * - `priority` adds fetchpriority="high" + <link rel="preload"> in <head>
+       *   so the browser discovers and fetches it during HTML parse (fixes LCP)
+       * - `sizes` generates a srcset matching real viewport breakpoints
+       */}
+      <Image
+        src={posterUrl}
+        alt={reduced ? alt : ''}
+        fill
+        priority
+        sizes="(min-width: 1280px) 1280px, (min-width: 768px) 1024px, 768px"
+        quality={75}
+        className="object-cover"
+        aria-hidden={reduced ? undefined : true}
+      />
+
+      {/* Video plays on top of the poster once loaded; reduced-motion users only see the Image */}
+      {!reduced && (
         <video
           ref={videoRef}
           autoPlay
@@ -49,7 +61,6 @@ export function HeroVideo({ sources, posterUrl, className, alt }: HeroVideoProps
           muted
           playsInline
           preload="metadata"
-          poster={posterUrl}
           aria-label={alt}
           className="absolute inset-0 w-full h-full object-cover"
         >

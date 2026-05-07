@@ -75,7 +75,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                 type: 'video/mp4',
               },
             ]}
-            posterUrl="/hero.jpg"
+            posterUrl="/hero-poster.webp"
             alt="Behind the wheel — a closer look at the cars Auto Cyprus puts on the road"
           />
         </div>

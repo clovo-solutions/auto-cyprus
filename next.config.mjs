@@ -31,6 +31,9 @@ const nextConfig = {
       {
         pathname: '/media/**',
       },
+      {
+        pathname: '/**',
+      },
     ],
     remotePatterns: [
       {
