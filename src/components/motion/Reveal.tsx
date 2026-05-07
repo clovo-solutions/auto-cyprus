@@ -38,6 +38,7 @@ export function Reveal({
         ease: [0.22, 1, 0.36, 1],
         delay,
       }}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </Component>

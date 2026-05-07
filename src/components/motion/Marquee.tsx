@@ -36,7 +36,7 @@ export function Marquee({
           direction === 'right' && '[animation-direction:reverse]',
           pauseOnHover && 'group-hover:[animation-play-state:paused]',
         )}
-        style={{ animationDuration: `${duration}s` }}
+        style={{ animationDuration: `${duration}s`, willChange: 'transform' }}
       >
         {children}
       </div>
@@ -46,7 +46,7 @@ export function Marquee({
           direction === 'right' && '[animation-direction:reverse]',
           pauseOnHover && 'group-hover:[animation-play-state:paused]',
         )}
-        style={{ animationDuration: `${duration}s` }}
+        style={{ animationDuration: `${duration}s`, willChange: 'transform' }}
       >
         {children}
       </div>

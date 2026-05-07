@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import { Hero } from '@/components/home/Hero';
 import { TrustStrip } from '@/components/home/TrustStrip';
 import { BrandWall } from '@/components/home/BrandWall';
-import { FeaturedCars } from '@/components/home/FeaturedCars';
 import { HowItWorks } from '@/components/home/HowItWorks';
 import { Categories } from '@/components/home/Categories';
 import { CustomerWall } from '@/components/home/CustomerWall';
@@ -30,7 +29,6 @@ export default async function HomePage({
       <Hero locale={locale} inventoryCount={inventoryCount} />
       <TrustStrip locale={locale} />
       <BrandWall locale={locale} />
-      {/* <FeaturedCars locale={locale} /> */}
       <HowItWorks locale={locale} />
       <Categories locale={locale} />
       <CustomerWall locale={locale} />

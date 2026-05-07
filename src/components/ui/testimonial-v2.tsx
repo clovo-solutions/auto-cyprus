@@ -103,6 +103,7 @@ function ScrollColumn({ items, duration = 20, className }: ScrollColumnProps) {
           repeatType: 'loop',
         }}
         className="flex flex-col gap-4 pb-4 list-none m-0 p-0"
+        style={{ willChange: 'transform' }}
       >
         {[0, 1].map((copy) => (
           <Fragment key={copy}>

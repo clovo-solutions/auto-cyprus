@@ -5,6 +5,14 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // Restore scroll position on browser back/forward
+  experimental: {
+    scrollRestoration: true,
+  },
+
+  // Keep heavy server-only packages out of the client bundle
+  serverExternalPackages: ['sharp', '@payloadcms/next'],
+
   // Next 16 promoted optimizePackageImports out of experimental
   optimizePackageImports: ['framer-motion', 'next-intl'],
 

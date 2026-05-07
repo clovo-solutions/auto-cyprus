@@ -11,7 +11,8 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(find \"/Users/alex/Downloads/auto-cyprus \\(1\\)/node_modules/.pnpm/next@16.2.4\"* -name \"*.d.ts\")",
-      "mcp__plugin_context-mode_context-mode__ctx_execute"
+      "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "mcp__plugin_context-mode_context-mode__ctx_execute_file"
     ]
   }
 }
