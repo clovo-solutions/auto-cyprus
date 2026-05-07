@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   }
 
   for (const tag of tags) {
-    revalidateTag(tag);
+    revalidateTag(tag, {});
   }
 
   return NextResponse.json({ ok: true, revalidated: tags });
