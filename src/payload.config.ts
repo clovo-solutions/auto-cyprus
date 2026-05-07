@@ -19,7 +19,8 @@ const s3Configured = Boolean(
   process.env['S3_ACCESS_KEY_ID'] &&
     process.env['S3_SECRET_ACCESS_KEY'] &&
     process.env['S3_BUCKET'] &&
-    process.env['S3_ENDPOINT'],
+    process.env['S3_ENDPOINT'] &&
+    process.env['S3_PUBLIC_URL'],
 );
 
 export default buildConfig({
@@ -54,6 +55,13 @@ export default buildConfig({
           collections: {
             media: {
               prefix: 'media',
+              // Serve files directly from the R2 public CDN URL.
+              // Called on every afterRead, so existing uploads are also fixed.
+              generateFileURL: ({ filename, prefix }) => {
+                const base = process.env['S3_PUBLIC_URL']!;
+                const dir = prefix ? `${prefix}/` : '';
+                return `${base}/${dir}${filename}`;
+              },
             },
           },
           bucket: process.env['S3_BUCKET']!,
