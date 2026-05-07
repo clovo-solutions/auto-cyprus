@@ -3,7 +3,7 @@ import { SITE_URL, SITE_NAME, localizedUrl } from './seo';
 import type { Locale } from '@/i18n/config';
 import type { Car, Media } from '@/payload-types';
 
-function imgUrl(image: number | Media | null | undefined): string | undefined {
+function imgUrl(image: string | number | Media | null | undefined): string | undefined {
   if (image && typeof image === 'object' && 'url' in image && image.url) {
     return image.url.startsWith('http') ? image.url : `${SITE_URL}${image.url}`;
   }
