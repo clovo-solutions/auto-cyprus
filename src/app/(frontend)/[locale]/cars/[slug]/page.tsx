@@ -23,9 +23,16 @@ import type { Car, Media } from '@/payload-types';
 
 export const revalidate = 300;
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  const slugs = await findAllCarSlugs();
-  return slugs.map((slug) => ({ slug }));
+  try {
+    const slugs = await findAllCarSlugs();
+    return slugs.map((slug) => ({ slug }));
+  } catch {
+    // DB unreachable at build time — pages will be rendered on first request
+    return [];
+  }
 }
 
 export async function generateMetadata({
