@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ArrowRightIcon, MapPinIcon } from '@/components/icons';
-import { mapsHref } from '@/lib/site';
+import { ArrowRightIcon } from '@/components/icons';
 import type { Locale } from '@/i18n/config';
 import { SplitReveal } from '@/components/motion/SplitReveal';
 import { Reveal } from '@/components/motion/Reveal';
@@ -22,33 +21,30 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
       live: 'Live',
       issue: 'Issue',
       cars: 'cars',
-      credentials: [
-        'Est. 2013',
-        '3,000+ owners',
-        '100-point inspection',
-        'Limassol · island-wide',
+      trustBadges: [
+        'Verified & inspected',
+        'Trusted across Cyprus',
+        'Transparent pricing',
       ],
     },
     gr: {
       live: 'Ζωντανά',
       issue: 'Έκδοση',
       cars: 'αυτοκίνητα',
-      credentials: [
-        'Από το 2013',
-        '3.000+ ιδιοκτήτες',
-        'Έλεγχος 100 σημείων',
-        'Λεμεσός · παντού στο νησί',
+      trustBadges: [
+        'Πιστοποιημένα & ελεγμένα',
+        'Εμπιστευμένα σε όλη την Κύπρο',
+        'Διαφανείς τιμές',
       ],
     },
     ru: {
       live: 'В реальном времени',
       issue: 'Выпуск',
       cars: 'машин',
-      credentials: [
-        'С 2013 года',
-        '3 000+ владельцев',
-        'Осмотр по 100 пунктам',
-        'Лимассол · по всему острову',
+      trustBadges: [
+        'Проверены и осмотрены',
+        'Доверяют по всему Кипру',
+        'Прозрачные цены',
       ],
     },
   };
@@ -79,7 +75,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                 type: 'video/mp4',
               },
             ]}
-            posterUrl="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&q=85&w=1800"
+            posterUrl="/hero.jpg"
             alt="Behind the wheel — a closer look at the cars Auto Cyprus puts on the road"
           />
         </div>
@@ -205,10 +201,10 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
             </span>
           </Reveal>
 
-          <div className="flex-1 flex items-center py-6 sm:py-8 md:py-12">
+          <div className="flex-1 flex items-center py-4 sm:py-6 md:py-8">
             <div className="relative max-w-[920px] xl:max-w-[1080px]">
-<h1
-  className="display text-balance text-[3.5rem] sm:text-6xl md:text-6xl lg:text-[6.5rem] xl:text-[8rem] leading-[0.92] tracking-[-0.02em]"
+              <h1
+                className="display text-balance text-[3.5rem] sm:text-6xl md:text-6xl lg:text-[6.5rem] xl:text-[8rem] leading-[0.92] tracking-[-0.02em]"
                 style={{
                   color: '#ffffff',
                   textShadow: '0 2px 24px rgba(0, 0, 0, 0.5)',
@@ -221,49 +217,25 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                   delay={0.2}
                 />
               </h1>
+
+              <Reveal delay={0.65}>
+                <p
+                  className="mt-5 md:mt-7 text-base md:text-lg max-w-[40ch] leading-relaxed text-pretty"
+                  style={{ color: 'rgba(255,255,255,0.72)' }}
+                >
+                  {t('sub')}
+                </p>
+              </Reveal>
             </div>
           </div>
 
-          <div className="flex flex-col gap-5 md:gap-9">
+          <div className="flex flex-col gap-5 md:gap-7">
             <Reveal delay={0.95}>
-              <ul
-                className="flex flex-wrap items-center gap-x-3 gap-y-2 md:gap-x-5 uppercase"
-                style={{
-                  fontSize: '10px',
-                  letterSpacing: '0.18em',
-                }}
-              >
-                {labels.credentials.map((credential, i) => (
-                  <li key={credential} className="flex items-center gap-3 md:gap-5">
-                    <span
-                      style={{
-                        color:
-                          i === 0
-                            ? 'var(--color-accent-soft)'
-                            : '#ffffff',
-                        textShadow: '0 1px 8px rgba(0, 0, 0, 0.4)',
-                      }}
-                    >
-                      {credential}
-                    </span>
-                    {i < labels.credentials.length - 1 ? (
-                      <span
-                        aria-hidden="true"
-                        className="block w-2 md:w-3 h-px"
-                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}
-                      />
-                    ) : null}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={1.15}>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5">
-<Magnetic strength={0.18}>
-  <Link
-    href="/cars"
-    className="group btn-base inline-flex items-center justify-center gap-2 font-medium tracking-[0.04em] uppercase border text-sm px-8 py-4 min-h-[52px] relative overflow-hidden"
+                <Magnetic strength={0.18}>
+                  <Link
+                    href="/cars"
+                    className="group btn-base inline-flex items-center justify-center gap-2 font-medium tracking-[0.04em] uppercase border text-sm px-8 py-4 min-h-[52px] relative overflow-hidden"
                     style={{
                       backgroundColor: '#ffffff',
                       color: 'var(--color-ink)',
@@ -284,17 +256,51 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                     </span>
                   </Link>
                 </Magnetic>
-                <a
-  href={mapsHref()}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-2 px-2 py-3 text-sm link-rule self-start sm:self-auto"
-  style={{ color: '#ffffff' }}
->
-  <MapPinIcon size={14} />
-  {t('secondaryCta')}
-</a>
+
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-2 py-3 text-sm link-rule self-start sm:self-auto"
+                  style={{ color: 'rgba(255,255,255,0.9)' }}
+                >
+                  {t('secondaryCta')}
+                  <ArrowRightIcon size={12} />
+                </Link>
               </div>
+            </Reveal>
+
+            <Reveal delay={1.2}>
+              <ul className="flex flex-wrap items-center gap-x-5 gap-y-2.5">
+                {labels.trustBadges.map((badge) => (
+                  <li key={badge} className="flex items-center gap-2">
+                    <span
+                      aria-hidden="true"
+                      className="flex-shrink-0 inline-flex items-center justify-center w-4 h-4 rounded-full"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                    >
+                      <svg width="7" height="6" viewBox="0 0 7 6" fill="none" aria-hidden="true">
+                        <path
+                          d="M1 3L2.8 5L6 1"
+                          stroke="var(--color-accent-soft)"
+                          strokeWidth="1.3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span
+                      className="font-medium uppercase"
+                      style={{
+                        fontSize: '10px',
+                        letterSpacing: '0.16em',
+                        color: 'rgba(255,255,255,0.68)',
+                        textShadow: '0 1px 6px rgba(0,0,0,0.3)',
+                      }}
+                    >
+                      {badge}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </Reveal>
           </div>
         </div>

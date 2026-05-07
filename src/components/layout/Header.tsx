@@ -65,7 +65,7 @@ export function Header({ locale: _locale }: HeaderProps) {
               >
                 <span>{t(item.key)}</span>
                 <span
-                  className="absolute -bottom-0.5 left-0 right-0 h-px bg-ink scale-x-0 origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                  className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent scale-x-0 origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
                   aria-hidden="true"
                 />
               </Link>

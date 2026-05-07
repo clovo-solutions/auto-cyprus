@@ -47,10 +47,10 @@
 "home": {
   "hero": {
     "eyebrow": "Limassol · Since 2013",
-    "headline": "Cars worth knowing.",
-    "sub": "",
-    "primaryCta": "See our cars",
-    "secondaryCta": "Visit the showroom"
+    "headline": "Carefully selected cars. Exceptional condition.",
+    "sub": "Quality you can see. Service you can trust.",
+    "primaryCta": "Browse Cars",
+    "secondaryCta": "Get in Touch"
   },
     "trust": {
       "title": "What that means for you",
@@ -263,7 +263,19 @@
     "hero": {
       "eyebrow": "Sell to us",
       "headline": "A simple, hassle-free way to sell your car.",
-      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door."
+      "sub": "We'll give you a fair offer in 24 hours, pay you the same day, and take care of all the paperwork. No classifieds, no time-wasters, no haggling at your door.",
+      "cta": "Get a free valuation",
+      "secondaryCta": "WhatsApp us first",
+      "badge1": "Free valuation",
+      "badge2": "No obligation",
+      "badge3": "Response within 24 hours"
+    },
+    "midCta": {
+      "eyebrow": "Quick response",
+      "title": "Ready to sell?",
+      "sub": "WhatsApp or call the showroom — we'll get back to you within the hour.",
+      "whatsapp": "Message on WhatsApp",
+      "phone": "Call the showroom"
     },
     "pitch": {
       "title": "Why sell to us instead of advertising privately",
@@ -330,7 +342,7 @@
     "hero": {
       "eyebrow": "Find us",
       "headline": "Drop by — we'd love to meet you in person.",
-      "sub": "Our showroom is in central Limassol, twenty minutes from the airport and a five-minute walk from the GSP Stadium."
+      "sub": "Our showroom is in central Limassol."
     },
     "tiles": {
       "phone": {

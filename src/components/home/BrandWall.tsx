@@ -27,15 +27,25 @@ export function BrandWall({ locale: _locale }: BrandWallProps) {
   const eyebrow = 'Brands on the floor';
 
   return (
-    <section className="bg-bone py-16 md:py-20 border-y border-rule-light overflow-hidden">
+    <section className="relative bg-bone py-16 md:py-20 border-y border-rule-light overflow-hidden">
       <Container>
         <div className="flex items-center gap-4 mb-8 md:mb-10">
-          <span className="block w-12 h-px bg-ink" aria-hidden="true" />
+          <span className="block w-12 h-px bg-accent" aria-hidden="true" />
           <span className="eyebrow">{eyebrow}</span>
         </div>
       </Container>
 
       {/* Full-bleed marquee outside the container */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-0 top-0 h-full w-28 md:w-40 z-10"
+        style={{ background: 'linear-gradient(to right, var(--color-bone) 0%, transparent 100%)' }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-0 top-0 h-full w-28 md:w-40 z-10"
+        style={{ background: 'linear-gradient(to left, var(--color-bone) 0%, transparent 100%)' }}
+      />
       <Marquee duration={60}>
         {brands.map((brand, i) => (
           <span

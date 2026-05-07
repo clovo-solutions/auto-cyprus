@@ -95,7 +95,7 @@ export function HeroVideo({ sources, posterUrl, className, alt }: HeroVideoProps
       />
 
       {/* Mute toggle — top-right, square 44pt button */}
-      {hasMounted && !reduced ? (
+      {/* {hasMounted && !reduced ? (
         <button
           type="button"
           onClick={() => setMuted((m) => !m)}
@@ -114,7 +114,7 @@ export function HeroVideo({ sources, posterUrl, className, alt }: HeroVideoProps
             <SpeakerOnIcon size={18} />
           )}
         </button>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

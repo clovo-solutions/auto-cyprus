@@ -23,8 +23,12 @@
   --color-rule: #1f242b;
   --color-rule-light: #d8d6cc;
 
+  /* Cognac brass — primary accent used throughout for interactive hairlines,
+     numbered display accents, CTA hover overlays, and the brand slash mark. */
+  --color-accent: #c49a3c;
+  --color-accent-soft: #d4ae58;
+
   /* Auxiliary accents — used sparingly, only in the hero for now.
-     Cognac brass we already have; these add the leather-companion tones.
      Oxblood: dark red — interior leather, badge piping, "1" on a dial.
      Slate: cool blue-grey — dashboard panel, brushed aluminium trim. */
   --color-oxblood: #6b2a26;

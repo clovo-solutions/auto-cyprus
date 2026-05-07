@@ -160,7 +160,7 @@ return (
           <span
             className="display-italic tabular-nums leading-none"
             style={{
-              color: 'var(--color-ink)',
+              color: 'var(--color-accent)',
               fontSize: '1.5rem',
             }}
           >
@@ -195,11 +195,13 @@ return (
               color: 'var(--color-ink)',
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--color-ink)';
+              (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'var(--color-accent)';
+              (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-accent)';
               (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-bone)';
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.backgroundColor = 'transparent';
+              (e.currentTarget as HTMLButtonElement).style.borderColor = 'var(--color-rule-light)';
               (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-ink)';
             }}
           >
@@ -221,9 +223,25 @@ return (
         </div>
       </div>
 
-      {/* Hint text — only visible until first interaction */}
+      {/* Progress pips — ink track, accent fill for active */}
+      <div className="flex items-center gap-1.5 max-w-[720px] mx-auto w-full px-1">
+        {customers.map((_, i) => (
+          <span
+            key={i}
+            className="block transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{
+              height: '2px',
+              width: i === activeIdx ? '28px' : '8px',
+              backgroundColor: i === activeIdx ? 'var(--color-accent)' : 'var(--color-ink)',
+              opacity: i === activeIdx ? 1 : 0.18,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Hint text */}
       <p
-        className="text-2xs uppercase tracking-[0.22em] text-center mt-2"
+        className="text-2xs uppercase tracking-[0.22em] text-center mt-1"
         style={{ color: 'var(--color-graphite)' }}
       >
         {labels.instructions}
@@ -334,10 +352,15 @@ const baseTransform = isActive
         )}
         style={{
           backgroundColor: 'var(--color-cream)',
-          // Index-card paper feel: warm off-white, very subtle texture, hairline border
-          border: '1px solid var(--color-rule-light)',
+          // Active card: accent left border + stronger shadow for depth; inactive: hairline only
+          borderTop: '1px solid var(--color-rule-light)',
+          borderRight: '1px solid var(--color-rule-light)',
+          borderBottom: '1px solid var(--color-rule-light)',
+          borderLeft: isActive
+            ? '3px solid var(--color-accent)'
+            : '1px solid var(--color-rule-light)',
           boxShadow: isActive
-            ? '0 24px 60px -20px rgba(14, 17, 22, 0.25), 0 8px 24px -8px rgba(14, 17, 22, 0.12)'
+            ? '0 24px 60px -20px rgba(14, 17, 22, 0.28), 0 8px 24px -8px rgba(14, 17, 22, 0.14), -2px 0 0 0 var(--color-accent)'
             : '0 8px 20px -8px rgba(14, 17, 22, 0.18)',
         }}
       >

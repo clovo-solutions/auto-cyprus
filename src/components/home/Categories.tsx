@@ -104,7 +104,7 @@ export async function Categories({ locale }: CategoriesProps) {
         </div>
 
         {/* Bento grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[420px_300px] gap-3 md:gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[400px_360px] gap-3 md:gap-4">
           {/* Hero — left, 7 cols × 2 rows */}
           <Reveal className="lg:col-span-7 lg:row-span-2">
             <CategoryTile
@@ -126,14 +126,13 @@ export async function Categories({ locale }: CategoriesProps) {
             />
           </Reveal>
 
-          {/* Bottom-right — Coupe + Convertible, now bigger and equal */}
+          {/* Bottom-right — Coupe + Convertible */}
           <Reveal delay={0.18} className="lg:col-span-3 lg:row-span-1">
             <CategoryTile
               entry={rest[1]!}
               caption={rest[1]!.caption[locale]}
               label={t(`items.${rest[1]!.key}`)}
               countLabel={`${rest[1]!.count} ${tCount}`}
-              compact
             />
           </Reveal>
           <Reveal delay={0.26} className="lg:col-span-2 lg:row-span-1">

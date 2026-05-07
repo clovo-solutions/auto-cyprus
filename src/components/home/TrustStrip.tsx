@@ -70,7 +70,11 @@ export async function TrustStrip({ locale }: TrustStripProps) {
                 </p>
               </div>
 
-              {/* Hairline that draws in on hover */}
+              {/* Hairlines — top draws right-to-left, bottom draws left-to-right */}
+              <span
+                className="absolute top-0 left-0 h-px w-full bg-accent scale-x-0 origin-right transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+                aria-hidden="true"
+              />
               <span
                 className="absolute bottom-0 left-0 h-px w-full bg-accent scale-x-0 origin-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
                 aria-hidden="true"

@@ -10,8 +10,8 @@ export const site = {
   name: 'Auto Cyprus',
   shortName: 'Auto // Cyprus',
   url: envString('NEXT_PUBLIC_SITE_URL', 'http://localhost:3000'),
-  phone: envString('NEXT_PUBLIC_PHONE', '+35722000000'),
-  whatsapp: envString('NEXT_PUBLIC_WHATSAPP', '+35799000000'),
+  phone: envString('NEXT_PUBLIC_PHONE', '+35795149488'),
+  whatsapp: envString('NEXT_PUBLIC_WHATSAPP', '+35795149488'),
   email: envString('NEXT_PUBLIC_EMAIL', 'hello@autocyprus.example'),
   address: envString('NEXT_PUBLIC_ADDRESS', 'Limassol, Cyprus'),
   geo: {
