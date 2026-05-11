@@ -81,7 +81,7 @@ export function SplashScreen() {
           Limassol&nbsp;&nbsp;·&nbsp;&nbsp;Since 2013
         </p>
 
-        {/* Brand mark — Geist Sans × Instrument Serif, two typefaces, one identity */}
+        {/* Brand mark */}
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
           <span
             style={{
@@ -93,33 +93,7 @@ export function SplashScreen() {
               animation: 'ac-up 0.7s cubic-bezier(0.22,1,0.36,1) 180ms both',
             }}
           >
-            Auto
-          </span>
-          <span
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontSize: 'clamp(2.2rem, 6.6vw, 3.85rem)',
-              lineHeight: 1,
-              color: 'var(--color-accent)',
-              animation: 'ac-up 0.7s cubic-bezier(0.22,1,0.36,1) 280ms both',
-            }}
-          >
-            /
-          </span>
-          <span
-            style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: 'italic',
-              fontWeight: 400,
-              fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-              letterSpacing: '-0.015em',
-              color: 'var(--color-bone)',
-              animation: 'ac-up 0.7s cubic-bezier(0.22,1,0.36,1) 380ms both',
-            }}
-          >
-            Cyprus
+            The AZZ&apos;s
           </span>
         </div>
 

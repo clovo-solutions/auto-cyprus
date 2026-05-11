@@ -3,13 +3,13 @@ function trimOrFallback(value: string | undefined, fallback: string): string {
 }
 
 export const site = {
-  name: 'Auto Cyprus',
-  shortName: 'Auto // Cyprus',
+  name: "The AZZ's",
+  shortName: "The AZZ's",
   url: trimOrFallback(process.env.NEXT_PUBLIC_SITE_URL, 'http://localhost:3000'),
-  phone: trimOrFallback(process.env.NEXT_PUBLIC_PHONE, '+35795149488'),
-  whatsapp: trimOrFallback(process.env.NEXT_PUBLIC_WHATSAPP, '+35795149488'),
-  email: trimOrFallback(process.env.NEXT_PUBLIC_EMAIL, 'hello@autocyprus.example'),
-  address: trimOrFallback(process.env.NEXT_PUBLIC_ADDRESS, 'Pafou 57, Limassol 3051, Cyprus'),
+  phone: trimOrFallback(process.env.NEXT_PUBLIC_PHONE, '+35799991888'),
+  whatsapp: trimOrFallback(process.env.NEXT_PUBLIC_WHATSAPP, '+35799991888'),
+  email: trimOrFallback(process.env.NEXT_PUBLIC_EMAIL, 'azzbrotherscars@hotmail.com'),
+  address: trimOrFallback(process.env.NEXT_PUBLIC_ADDRESS, 'Omonoias 55, Limassol 3052, Cyprus'),
   geo: {
     lat: 35.1856,
     lng: 33.3823,

@@ -26,7 +26,7 @@ export async function Footer({ locale }: FooterProps) {
           <div className="grid md:grid-cols-12 gap-12 md:gap-8">
             <div className="md:col-span-7">
               <p className="display-italic text-bone text-5xl md:text-7xl lg:text-[9rem] leading-[0.9] tracking-tight">
-                Auto<span className="text-accent">{' / '}</span>Cyprus
+                The AZZ&apos;s
               </p>
               <p className="mt-8 text-mist text-base max-w-md text-pretty">
                 {t('tagline')}
@@ -110,7 +110,7 @@ export async function Footer({ locale }: FooterProps) {
         {/* Bottom row */}
         <div className="py-6 md:py-8 flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-2xs text-mist tracking-wider uppercase">
-            © {year} Auto Cyprus · {t('rights')}
+            © {year} The AZZ&apos;s · {t('rights')}
           </p>
           <LocaleSwitcher onDark />
         </div>

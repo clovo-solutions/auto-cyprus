@@ -30,7 +30,7 @@ export function CertificateSeal({
       className={cn('relative inline-flex items-center justify-center', className)}
       style={{ width: size, height: size }}
       role="img"
-      aria-label="Auto Cyprus verified seal"
+      aria-label="The AZZ's verified seal"
     >
       <svg
         viewBox={`0 0 ${size} ${size}`}
