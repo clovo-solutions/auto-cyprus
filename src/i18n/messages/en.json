@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "The AZZ's",
+    "siteName": "Auto Cyprus",
     "siteTagline": "Quality cars, all over Cyprus.",
     "callUs": "Call us",
     "whatsapp": "WhatsApp",
@@ -380,8 +380,8 @@
     },
     "founder": {
       "eyebrow": "The founders",
-      "title": "The brothers behind The AZZ's",
-      "body": "We built The AZZ's from the ground up — one car at a time, one customer at a time. Twelve years and three thousand customers later, that's still the standard we hold ourselves to. Every car we sell is one we'd be happy to drive home — and if a car doesn't meet that bar, it doesn't go on our lot.",
+      "title": "The brothers behind Auto Cyprus",
+      "body": "We built Auto Cyprus from the ground up — one car at a time, one customer at a time. Twelve years and three thousand customers later, that's still the standard we hold ourselves to. Every car we sell is one we'd be happy to drive home — and if a car doesn't meet that bar, it doesn't go on our lot.",
       "andreasName": "Andreas",
       "zachariasName": "Zacharias",
       "role": "Co-founder"
@@ -414,7 +414,7 @@
         "two": {
           "year": "2016",
           "title": "Moved to our current showroom",
-          "body": "Relocated to a larger space at Pafou 57, Limassol, with room for forty cars and a dedicated service bay."
+          "body": "Relocated to a larger space at ..., Limassol, with room for forty cars and a dedicated service bay."
         },
         "three": {
           "year": "2019",
@@ -439,23 +439,23 @@
   },
   "seo": {
     "default": {
-      "title": "The AZZ's — Quality cars in Limassol",
+      "title": "Auto Cyprus — Quality cars in Limassol",
       "description": "A small, family-run car dealer in Limassol, Cyprus. Around forty quality cars in stock at a time, fully inspected, with delivery across the island."
     },
     "cars": {
-      "title": "Our cars — The AZZ's",
+      "title": "Our cars — Auto Cyprus",
       "description": "Browse our current selection of quality cars in Cyprus. Filter by brand, body type, fuel, and price."
     },
     "sell": {
-      "title": "Sell your car — The AZZ's",
-      "description": "Sell your car directly to The AZZ's. Fair offer in 24 hours, paid on the spot, all paperwork handled."
+      "title": "Sell your car — Auto Cyprus",
+      "description": "Sell your car directly to Auto Cyprus. Fair offer in 24 hours, paid on the spot, all paperwork handled."
     },
     "contact": {
-      "title": "Contact — The AZZ's",
+      "title": "Contact — Auto Cyprus",
       "description": "Visit our showroom in Limassol, or get in touch by phone, WhatsApp, or email."
     },
     "about": {
-      "title": "About — The AZZ's",
+      "title": "About — Auto Cyprus",
       "description": "Twelve years selling quality cars in Cyprus. Around forty cars at a time, just the way we like it."
     }
   }

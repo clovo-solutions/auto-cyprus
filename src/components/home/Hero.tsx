@@ -83,7 +83,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
           />
           <HeroVideoPlayer
             sources={[{ src: '/hero.mp4', type: 'video/mp4' }]}
-            alt="Behind the wheel — a closer look at the cars The AZZ's puts on the road"
+            alt="Behind the wheel — a closer look at the cars Auto Cyprus puts on the road"
           />
           {/* Warm color-grade overlay */}
           <div

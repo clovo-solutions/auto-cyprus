@@ -2,13 +2,13 @@ import { site, mapsHref } from '@/lib/site';
 import { ArrowUpRightIcon } from '@/components/icons';
 
 export function ShowroomMap() {
-  const src = "https://www.google.com/maps?q=Azz+Brothers+Car+Dealers,+Omonoias+55,+Limassol,+Cyprus&output=embed";
+  const src = "https://www.google.com/maps?q=Auto+Cyprus+Car+Dealers,+Limassol,+Cyprus&output=embed";
 
   return (
     <div className="relative aspect-cinema md:aspect-[2/1] bg-fog/40 overflow-hidden">
       <iframe
         src={src}
-        title="The AZZ's showroom map"
+        title="Auto Cyprus showroom map"
         className="absolute inset-0 w-full h-full grayscale-[40%] contrast-[1.05]"
         loading="lazy"
         allowFullScreen

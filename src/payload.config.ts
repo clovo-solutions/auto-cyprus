@@ -27,7 +27,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     meta: {
-      titleSuffix: "— The AZZ's",
+      titleSuffix: "— Auto Cyprus",
     },
   },
   collections: [Users, Media, Brands, Cars, Inquiries],

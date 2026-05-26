@@ -108,7 +108,7 @@ export default async function SellPage({
                 className="hidden md:flex items-center gap-3 py-3"
                 style={{ color: 'rgba(255,255,255,0.4)' }}
               >
-                <span>The AZZ&apos;s</span>
+                <span>Auto Cyprus</span>
                 <span aria-hidden="true">·</span>
                 <span>Limassol</span>
                 <span aria-hidden="true">·</span>

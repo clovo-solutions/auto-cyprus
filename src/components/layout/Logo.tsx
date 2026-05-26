@@ -15,9 +15,9 @@ export function Logo({ className, onDark = false }: LogoProps) {
         onDark ? 'text-bone' : 'text-ink',
         className,
       )}
-      aria-label="The AZZ's — go to home page"
+      aria-label="Auto Cyprus — go to home page"
     >
-      <span className="font-medium tracking-[0.02em]">The AZZ&apos;s</span>
+      <span className="font-medium tracking-[0.02em]">Auto Cyprus</span>
     </Link>
   );
 }

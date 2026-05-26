@@ -49,14 +49,14 @@ export async function generateMetadata({
   return {
     title: {
       default: t('title'),
-      template: "%s — The AZZ's",
+      template: "%s — Auto Cyprus",
     },
     description: t('description'),
     alternates: buildAlternates('/', locale),
     openGraph: {
       type: 'website',
       locale: localeToBcp47[locale],
-      siteName: "The AZZ's",
+      siteName: "Auto Cyprus",
       title: t('title'),
       description: t('description'),
     },
