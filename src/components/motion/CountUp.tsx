@@ -52,12 +52,18 @@ export function CountUp({
   }, [inView, value, duration, reduced]);
 
   const formatted = format ? format(display) : display.toLocaleString();
+  const finalFormatted = format ? format(value) : value.toLocaleString();
 
   return (
     <span ref={ref} className={cn(className)}>
-      {prefix}
-      {formatted}
-      {suffix}
+      {/* Screen readers get the true final value, never an intermediate
+          animation frame. The animating digits are hidden from a11y. */}
+      <span className="sr-only">{`${prefix}${finalFormatted}${suffix}`}</span>
+      <span aria-hidden="true">
+        {prefix}
+        {formatted}
+        {suffix}
+      </span>
     </span>
   );
 }

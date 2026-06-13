@@ -28,6 +28,12 @@
   --color-accent: #c49a3c;
   --color-accent-soft: #d4ae58;
 
+  /* On-dark — text, hairlines and fills that sit over photography/video
+     (the hero). Pure white is intentional here for legibility over imagery,
+     and lives in one token instead of being hardcoded across the markup.
+     Use with Tailwind opacity modifiers, e.g. text-on-dark/70, bg-on-dark/10. */
+  --color-on-dark: #ffffff;
+
   /* Auxiliary accents — used sparingly, only in the hero for now.
      Oxblood: dark red — interior leather, badge piping, "1" on a dial.
      Slate: cool blue-grey — dashboard panel, brushed aluminium trim. */
@@ -103,6 +109,13 @@
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+  }
+
+  /* Anchored jumps (skip-link → #main, car detail → #inquire, etc.) must clear
+     the sticky header instead of landing hidden beneath it. */
+  :target,
+  #main {
+    scroll-margin-top: 6rem;
   }
 
   body {

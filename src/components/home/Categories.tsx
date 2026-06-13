@@ -73,14 +73,12 @@ export async function Categories({ locale }: CategoriesProps) {
     getTranslations({ locale, namespace: 'home.categories' }),
     findBodyTypeCounts(),
   ]);
-  const tCount = locale === 'gr' ? 'στη συλλογή' : locale === 'ru' ? 'в наличии' : 'in stock';
-
   const hero = categories.find((c) => c.hero)!;
   const rest = categories.filter((c) => !c.hero);
 
   const countLabel = (entry: CategoryEntry) => {
     const n = counts[entry.body] ?? 0;
-    return n > 0 ? `${n} ${tCount}` : null;
+    return n > 0 ? `${n} ${t('inStock')}` : null;
   };
 
   return (
@@ -97,9 +95,7 @@ export async function Categories({ locale }: CategoriesProps) {
             href="/cars"
             className="group link-rule self-start text-sm tracking-wide whitespace-nowrap inline-flex items-center gap-2"
           >
-            <span>
-              {locale === 'gr' ? 'Όλες οι κατηγορίες' : locale === 'ru' ? 'Все категории' : 'All categories'}
-            </span>
+            <span>{t('allCategories')}</span>
             <ArrowUpRightIcon
               size={14}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -116,6 +112,7 @@ export async function Categories({ locale }: CategoriesProps) {
               caption={hero.caption[locale]}
               label={t(`items.${hero.key}`)}
               countLabel={countLabel(hero)}
+              ctaLabel={t('browse')}
               hero
             />
           </Reveal>
@@ -127,6 +124,7 @@ export async function Categories({ locale }: CategoriesProps) {
               caption={rest[0]!.caption[locale]}
               label={t(`items.${rest[0]!.key}`)}
               countLabel={countLabel(rest[0]!)}
+              ctaLabel={t('browse')}
             />
           </Reveal>
 
@@ -137,6 +135,7 @@ export async function Categories({ locale }: CategoriesProps) {
               caption={rest[1]!.caption[locale]}
               label={t(`items.${rest[1]!.key}`)}
               countLabel={countLabel(rest[1]!)}
+              ctaLabel={t('browse')}
             />
           </Reveal>
           <Reveal delay={0.26} className="lg:col-span-2 lg:row-span-1">
@@ -145,6 +144,7 @@ export async function Categories({ locale }: CategoriesProps) {
               caption={rest[2]!.caption[locale]}
               label={t(`items.${rest[2]!.key}`)}
               countLabel={countLabel(rest[2]!)}
+              ctaLabel={t('view')}
               compact
               minimal
             />
@@ -160,6 +160,7 @@ interface CategoryTileProps {
   label: string;
   caption: string;
   countLabel: string | null;
+  ctaLabel: string;
   hero?: boolean;
   compact?: boolean;
   minimal?: boolean;
@@ -170,6 +171,7 @@ function CategoryTile({
   label,
   caption,
   countLabel,
+  ctaLabel,
   hero = false,
   compact = false,
   minimal = false,
@@ -252,7 +254,7 @@ function CategoryTile({
 
         <div className="flex items-center justify-between mt-2 pt-3 border-t border-bone/20 group-hover:border-bone/40 transition-colors duration-500">
           <span className="text-2xs uppercase tracking-[0.22em] text-bone/70 group-hover:text-bone transition-colors duration-500">
-            {minimal ? 'View' : 'Browse the range'}
+            {ctaLabel}
           </span>
           <span className="text-bone transition-transform duration-500 group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
             <ArrowUpRightIcon size={hero ? 22 : 16} />

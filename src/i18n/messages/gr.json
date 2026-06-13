@@ -104,6 +104,10 @@
     "categories": {
       "eyebrow": "Ανά αμάξωμα",
       "title": "Βρείτε αυτό που σας ταιριάζει",
+      "allCategories": "Όλες οι κατηγορίες",
+      "inStock": "στη συλλογή",
+      "browse": "Δείτε τη συλλογή",
+      "view": "Προβολή",
       "items": {
         "suv": "SUV",
         "sedan": "Sedan",
@@ -145,7 +149,8 @@
       "mileageRange": "Χλμ.",
       "min": "Από",
       "max": "Έως",
-      "results": "{count, plural, =0 {Κανένα αποτέλεσμα} =1 {1 αυτοκίνητο} other {# αυτοκίνητα}}"
+      "results": "{count, plural, =0 {Κανένα αποτέλεσμα} =1 {1 αυτοκίνητο} other {# αυτοκίνητα}}",
+      "active": "{count, plural, =1 {1 φίλτρο} other {# φίλτρα}}"
     },
     "sort": {
       "label": "Ταξινόμηση",

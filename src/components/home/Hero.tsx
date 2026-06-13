@@ -59,7 +59,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
   }).format(new Date());
 
   return (
-    <section className="relative bg-ink overflow-hidden" style={{ color: '#ffffff' }}>
+    <section className="relative bg-ink overflow-hidden text-on-dark">
       <div
         className="relative w-full"
         style={{
@@ -129,12 +129,8 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
 
         {/* Top masthead row */}
         <div
-          className="absolute top-0 inset-x-0 border-b container-page"
-          style={{
-            zIndex: 2,
-            borderColor: 'rgba(255, 255, 255, 0.15)',
-            color: '#ffffff',
-          }}
+          className="absolute top-0 inset-x-0 border-b border-on-dark/15 container-page"
+          style={{ zIndex: 2 }}
         >
           <div
             className="flex items-center justify-between uppercase"
@@ -144,7 +140,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
               letterSpacing: '0.18em',
             }}
           >
-            <div className="flex items-center gap-2 md:gap-3 py-3" style={{ color: '#ffffff' }}>
+            <div className="flex items-center gap-2 md:gap-3 py-3">
               <span className="relative inline-flex items-center justify-center w-1.5 h-1.5">
                 <span
                   aria-hidden="true"
@@ -157,18 +153,17 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                   aria-hidden="true"
                 />
               </span>
-              <span style={{ color: '#ffffff' }}>{labels.live}</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)' }} aria-hidden="true">·</span>
-              <span className="tabular-nums" style={{ color: '#ffffff' }}>
+              <span>{labels.live}</span>
+              <span className="text-on-dark/50" aria-hidden="true">·</span>
+              <span className="tabular-nums">
                 <CountUp value={inventoryCount} />{' '}
-                <span style={{ color: 'rgba(255,255,255,0.85)' }}>{labels.cars}</span>
+                <span className="text-on-dark/85">{labels.cars}</span>
               </span>
             </div>
-            <div className="hidden md:flex items-center gap-3 py-3" style={{ color: '#ffffff' }}>
+            <div className="hidden md:flex items-center gap-3 py-3">
               <span
                 className="leading-none font-medium"
                 style={{
-                  color: '#ffffff',
                   fontFamily: 'var(--font-serif)',
                   fontStyle: 'italic',
                   fontSize: '15px',
@@ -176,17 +171,14 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
               >
                 {labels.issue}
               </span>
-              <span className="tabular-nums" style={{ color: '#ffffff' }}>XII · 2026</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)' }} aria-hidden="true">·</span>
-              <span className="tabular-nums" style={{ color: '#ffffff' }}>{today}</span>
-              <span style={{ color: 'rgba(255,255,255,0.5)' }} aria-hidden="true">·</span>
-              <span style={{ color: '#ffffff' }}>Limassol</span>
+              <span className="tabular-nums">XII · 2026</span>
+              <span className="text-on-dark/50" aria-hidden="true">·</span>
+              <span className="tabular-nums">{today}</span>
+              <span className="text-on-dark/50" aria-hidden="true">·</span>
+              <span>Limassol</span>
             </div>
             {/* Mobile only — date in compact form */}
-            <div
-              className="flex md:hidden items-center py-3 tabular-nums"
-              style={{ color: 'rgba(255,255,255,0.85)' }}
-            >
+            <div className="flex md:hidden items-center py-3 tabular-nums text-on-dark/85">
               {today}
             </div>
           </div>
@@ -201,7 +193,6 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
             bottom: '0',
             paddingTop: 'clamp(1.5rem, 3vh, 4rem)',
             paddingBottom: 'clamp(1.5rem, 4vh, 4rem)',
-            color: '#ffffff',
           }}
         >
           {/* Top: Eyebrow */}
@@ -231,7 +222,6 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
               <h1
                 className="display text-balance text-[3.5rem] sm:text-6xl md:text-6xl lg:text-[6.5rem] xl:text-[8rem] leading-[0.92] tracking-[-0.02em]"
                 style={{
-                  color: '#ffffff',
                   textShadow: '0 2px 24px rgba(0, 0, 0, 0.5)',
                 }}
               >
@@ -244,10 +234,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
               </h1>
 
               <Reveal delay={0.65}>
-                <p
-                  className="mt-5 md:mt-7 text-base md:text-lg max-w-[40ch] leading-relaxed text-pretty"
-                  style={{ color: 'rgba(255,255,255,0.72)' }}
-                >
+                <p className="mt-5 md:mt-7 text-base md:text-lg max-w-[40ch] leading-relaxed text-pretty text-on-dark/70">
                   {t('sub')}
                 </p>
               </Reveal>
@@ -260,19 +247,14 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                 <Magnetic strength={0.18}>
                   <Link
                     href="/cars"
-                    className="group btn-base inline-flex items-center justify-center gap-2 font-medium tracking-[0.04em] uppercase border text-sm px-8 py-4 min-h-[52px] relative overflow-hidden"
-                    style={{
-                      backgroundColor: '#ffffff',
-                      color: 'var(--color-ink)',
-                      borderColor: '#ffffff',
-                    }}
+                    className="group btn-base inline-flex items-center justify-center gap-2 font-medium tracking-[0.04em] uppercase border text-sm px-8 py-4 min-h-[52px] relative overflow-hidden bg-on-dark text-ink border-on-dark"
                   >
                     <span
                       className="absolute inset-0 -translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0"
                       style={{ backgroundColor: 'var(--color-oxblood)' }}
                       aria-hidden="true"
                     />
-                    <span className="relative flex items-center gap-2 group-hover:text-white transition-colors duration-500">
+                    <span className="relative flex items-center gap-2 group-hover:text-on-dark transition-colors duration-500">
                       <span>{t('primaryCta')}</span>
                       <ArrowRightIcon
                         size={14}
@@ -284,8 +266,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-2 py-3 text-sm link-rule self-start sm:self-auto"
-                  style={{ color: 'rgba(255,255,255,0.9)' }}
+                  className="inline-flex items-center gap-2 px-2 py-3 text-sm link-rule self-start sm:self-auto text-on-dark/90"
                 >
                   {t('secondaryCta')}
                   <ArrowRightIcon size={12} />
@@ -299,8 +280,7 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                   <li key={badge} className="flex items-center gap-2">
                     <span
                       aria-hidden="true"
-                      className="flex-shrink-0 inline-flex items-center justify-center w-4 h-4 rounded-full"
-                      style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                      className="flex-shrink-0 inline-flex items-center justify-center w-4 h-4 rounded-full bg-on-dark/10"
                     >
                       <svg width="7" height="6" viewBox="0 0 7 6" fill="none" aria-hidden="true">
                         <path
@@ -313,11 +293,10 @@ export async function Hero({ locale, inventoryCount }: HeroProps) {
                       </svg>
                     </span>
                     <span
-                      className="font-medium uppercase"
+                      className="font-medium uppercase text-on-dark/70"
                       style={{
                         fontSize: '10px',
                         letterSpacing: '0.16em',
-                        color: 'rgba(255,255,255,0.68)',
                         textShadow: '0 1px 6px rgba(0,0,0,0.3)',
                       }}
                     >

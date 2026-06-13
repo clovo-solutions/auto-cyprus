@@ -16,7 +16,9 @@
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('browserslist:', d.get\\('browserslist','NOT SET'\\)\\); print\\('engines:', d.get\\('engines','NOT SET'\\)\\); print\\('targets:', d.get\\('targets','NOT SET'\\)\\)\")",
       "Bash(xargs -I{} basename {})",
       "Bash(git mv *)",
-      "Bash(npx payload *)"
+      "Bash(npx payload *)",
+      "Bash(node -e \"const j=require\\('./en.json'\\); console.log\\(JSON.stringify\\(j.home?.categories,null,2\\)\\)\")",
+      "Bash(node -e \"const j=require\\('./en.json'\\); console.log\\(JSON.stringify\\(j.cars?.filters,null,2\\)\\)\")"
     ]
   }
 }

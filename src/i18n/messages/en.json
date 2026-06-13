@@ -104,6 +104,10 @@
     "categories": {
       "eyebrow": "By body type",
       "title": "Find the right type for you",
+      "allCategories": "All categories",
+      "inStock": "in stock",
+      "browse": "Browse the range",
+      "view": "View",
       "items": {
         "suv": "SUV",
         "sedan": "Sedan",
@@ -145,7 +149,8 @@
       "mileageRange": "Mileage (km)",
       "min": "Min",
       "max": "Max",
-      "results": "{count, plural, =0 {No cars match} =1 {1 car} other {# cars}}"
+      "results": "{count, plural, =0 {No cars match} =1 {1 car} other {# cars}}",
+      "active": "{count, plural, =1 {1 filter} other {# filters}}"
     },
     "sort": {
       "label": "Sort",

@@ -96,7 +96,7 @@ export default async function CarsPage({
                     {tFilters('results', { count: result.totalDocs })}
                     {activeCount > 0 ? (
                       <span className="ml-3 text-graphite">
-                        · {activeCount} {activeCount === 1 ? 'filter' : 'filters'}
+                        · {tFilters('active', { count: activeCount })}
                       </span>
                     ) : null}
                   </p>
