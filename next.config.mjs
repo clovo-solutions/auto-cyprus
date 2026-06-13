@@ -8,13 +8,13 @@ const nextConfig = {
   // Restore scroll position on browser back/forward
   experimental: {
     scrollRestoration: true,
+    // Tree-shake large barrel packages (still experimental in Next 16)
+    optimizePackageImports: ['framer-motion', 'next-intl'],
   },
 
-  // Next 16 promoted optimizePackageImports out of experimental
-  optimizePackageImports: ['framer-motion', 'next-intl'],
-
-  // Tell Turbopack where the next-intl request config lives
+  // Pin the workspace root so Turbopack ignores stray lockfiles elsewhere
   turbopack: {
+    root: import.meta.dirname,
     resolveAlias: {
       'next-intl/config': './src/i18n/request.ts',
     },
@@ -41,7 +41,7 @@ const nextConfig = {
   },
 
   async headers() {
-    return [
+    const securityHeaders = [
       {
         source: '/(.*)',
         headers: [
@@ -58,6 +58,16 @@ const nextConfig = {
           },
         ],
       },
+    ];
+
+    // Custom Cache-Control on _next assets breaks HMR in dev, so only apply
+    // it in production where the immutable long-cache is what we actually want.
+    if (process.env.NODE_ENV !== 'production') {
+      return securityHeaders;
+    }
+
+    return [
+      ...securityHeaders,
       {
         source: '/_next/static/(.*)',
         headers: [

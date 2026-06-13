@@ -311,7 +311,7 @@ export default async function CarDetailPage({
                     className="inline-flex items-center gap-2 text-sm hover:opacity-70 transition-opacity"
                   >
                     <PhoneIcon size={14} />
-                    <span>{site.phone}</span>
+                    <span>{site?.phone}</span>
                   </a>
                   <a
                     href={buildWhatsAppLink(`Hi, I'm interested in the ${car.title}`)}

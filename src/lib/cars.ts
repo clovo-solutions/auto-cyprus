@@ -126,7 +126,10 @@ export async function findCars(
         sort,
         limit: PAGE_SIZE,
         page: filters.page,
-        depth: 2,
+        // CarCard only renders the first image (a depth-1 media relation) and
+        // scalar fields — it never reads nested brand relations, so depth 1 is
+        // enough and avoids over-fetching on every inventory render.
+        depth: 1,
       });
 
       return {

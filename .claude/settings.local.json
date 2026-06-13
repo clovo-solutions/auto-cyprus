@@ -14,7 +14,9 @@
       "mcp__plugin_context-mode_context-mode__ctx_execute",
       "mcp__plugin_context-mode_context-mode__ctx_execute_file",
       "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\('browserslist:', d.get\\('browserslist','NOT SET'\\)\\); print\\('engines:', d.get\\('engines','NOT SET'\\)\\); print\\('targets:', d.get\\('targets','NOT SET'\\)\\)\")",
-      "Bash(xargs -I{} basename {})"
+      "Bash(xargs -I{} basename {})",
+      "Bash(git mv *)",
+      "Bash(npx payload *)"
     ]
   }
 }

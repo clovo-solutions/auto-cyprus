@@ -93,15 +93,15 @@ export async function Footer({ locale }: FooterProps) {
             <div className="flex flex-col gap-2 md:items-end text-sm">
               <a href={phoneHref()} className="flex items-center gap-2 text-bone hover:text-mist transition-colors duration-150">
                 <PhoneIcon size={14} />
-                <span>{site.phone}</span>
+                <span>{site?.phone}</span>
               </a>
               <a href={whatsappHref()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-bone hover:text-mist transition-colors duration-150">
                 <WhatsappIcon size={14} />
-                <span>{site.whatsapp}</span>
+                <span>{site?.whatsapp}</span>
               </a>
               <a href={emailHref()} className="flex items-center gap-2 text-bone hover:text-mist transition-colors duration-150">
                 <MailIcon size={14} />
-                <span>{site.email}</span>
+                <span>{site?.email}</span>
               </a>
             </div>
           </div>

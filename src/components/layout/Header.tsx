@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useLinkStatus } from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 // import { Container } from '@/components/ui/Section';
@@ -68,15 +69,7 @@ export function Header({ locale: _locale }: HeaderProps) {
                   aria-current={isActive ? 'page' : undefined}
                 >
                   <span>{t(item.key)}</span>
-                  <span
-                    className={cn(
-                      'absolute -bottom-0.5 left-0 right-0 h-px origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-                      isActive
-                        ? 'bg-ink scale-x-100'
-                        : 'bg-accent scale-x-0 group-hover:scale-x-100',
-                    )}
-                    aria-hidden="true"
-                  />
+                  <NavUnderline isActive={isActive} />
                 </Link>
               );
             })}
@@ -88,7 +81,7 @@ export function Header({ locale: _locale }: HeaderProps) {
               className="flex items-center gap-2 text-sm tracking-wide hover:opacity-70 transition-opacity duration-150 tabular-nums"
             >
               <PhoneIcon size={14} />
-              <span>{site.phone}</span>
+              <span>{site?.phone}</span>
             </a>
             <span className="text-mist" aria-hidden="true">·</span>
             <LocaleSwitcher />
@@ -98,5 +91,25 @@ export function Header({ locale: _locale }: HeaderProps) {
         </div>
       </div>
     </header>
+  );
+}
+
+// Underline beneath each nav link. While that link's navigation is pending it
+// stays drawn and pulses in the accent, giving instant click feedback before
+// the destination paints. Must render inside <Link> for useLinkStatus to work.
+function NavUnderline({ isActive }: { isActive: boolean }) {
+  const { pending } = useLinkStatus();
+  return (
+    <span
+      className={cn(
+        'absolute -bottom-0.5 left-0 right-0 h-px origin-left transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+        pending
+          ? 'bg-accent scale-x-100 animate-pulse'
+          : isActive
+            ? 'bg-ink scale-x-100'
+            : 'bg-accent scale-x-0 group-hover:scale-x-100',
+      )}
+      aria-hidden="true"
+    />
   );
 }

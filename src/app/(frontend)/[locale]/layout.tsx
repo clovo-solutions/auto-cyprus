@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
@@ -9,6 +10,7 @@ import { buildAlternates } from '@/lib/seo';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { SplashScreen } from '@/components/ui/SplashScreen';
+import { RouteProgress } from '@/components/ui/RouteProgress';
 import { JsonLd } from '@/components/JsonLd';
 import { organizationJsonLd, autoDealerJsonLd } from '@/lib/seo-jsonld';
 
@@ -95,6 +97,9 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen bg-bone text-ink antialiased">
+        <Suspense fallback={null}>
+          <RouteProgress />
+        </Suspense>
         <NextIntlClientProvider messages={messages}>
           <SplashScreen />
           <a
