@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
@@ -23,8 +23,34 @@ export function MobileNav() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
 
+  // Mirror `open` into a ref so the route-change effect below can tell whether
+  // the navigation was triggered from inside the open menu.
+  const openRef = useRef(false);
   useEffect(() => {
+    openRef.current = open;
+  }, [open]);
+
+  useEffect(() => {
+    const cameFromMenu = openRef.current;
     setOpen(false);
+    if (!cameFromMenu) return;
+
+    // The menu locks body scroll, which suppresses the router's automatic
+    // scroll-to-top on mobile. Release the lock immediately, then force the
+    // new page to the top *after* it paints (two frames out) so nothing — the
+    // route commit, the loading skeleton, or scroll restoration — resets it.
+    document.body.style.overflow = '';
+    let raf2 = 0;
+    const raf1 = requestAnimationFrame(() => {
+      raf2 = requestAnimationFrame(() => {
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+      });
+    });
+    return () => {
+      cancelAnimationFrame(raf1);
+      cancelAnimationFrame(raf2);
+    };
   }, [pathname]);
 
   useEffect(() => {
@@ -104,6 +130,11 @@ export function MobileNav() {
                     >
                       <Link
                         href={item.href}
+                        onClick={() => {
+                          // Unlock body scroll synchronously, before the route
+                          // commits, so the router's scroll-to-top can apply.
+                          document.body.style.overflow = '';
+                        }}
                         className={cn(
                           'flex items-baseline justify-between py-6 group',
                           'text-3xl display tracking-tight',

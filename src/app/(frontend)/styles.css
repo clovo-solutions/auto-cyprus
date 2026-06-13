@@ -108,11 +108,14 @@
   html {
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
-    scroll-behavior: smooth;
   }
 
-  /* Anchored jumps (skip-link → #main, car detail → #inquire, etc.) must clear
-     the sticky header instead of landing hidden beneath it. */
+  /* `scroll-behavior: smooth` is intentionally NOT set on `html`. On the root
+     element it interferes with the App Router's scroll-to-top on route changes
+     — the reset animates and gets interrupted mid-navigation on mobile, so the
+     page appears to keep its previous scroll position. Anchor jumps therefore
+     resolve instantly, which is fine; the scroll-margin below keeps them clear
+     of the sticky header. */
   :target,
   #main {
     scroll-margin-top: 6rem;
