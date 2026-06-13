@@ -33,9 +33,14 @@ export async function findAllBrands(locale: Locale): Promise<Brand[]> {
         locale,
         limit: 100,
         sort: 'name',
-        depth: 1,
+        // The filter sidebar only reads id/name/slug — skip the logo media
+        // populate (depth 0) and other fields to keep this lightweight.
+        depth: 0,
+        select: { name: true, slug: true },
       });
-      return result.docs as Brand[];
+      // `select` narrows the inferred doc type to the chosen fields; the sidebar
+      // only reads id/name/slug, so treat it as Brand[] for the function contract.
+      return result.docs as unknown as Brand[];
     },
     ['brands', locale],
     { tags: [TAG_BRANDS_INDEX], revalidate: 3600 },
@@ -130,10 +135,28 @@ export async function findCars(
         // scalar fields — it never reads nested brand relations, so depth 1 is
         // enough and avoids over-fetching on every inventory render.
         depth: 1,
+        // Fetch only the fields CarCard actually renders. This skips the heavy
+        // localized rich-text description, the features array, engine/meta
+        // groups, etc. — cutting DB work, locale-fallback resolution, and the
+        // serialized RSC payload on every inventory navigation.
+        select: {
+          slug: true,
+          title: true,
+          price: true,
+          priceOnRequest: true,
+          year: true,
+          mileage: true,
+          transmission: true,
+          fuelType: true,
+          status: true,
+          images: true,
+        },
       });
 
       return {
-        docs: result.docs as Car[],
+        // `select` narrows the inferred doc type; CarCard only reads the
+        // selected fields, so cast to Car[] for the function contract.
+        docs: result.docs as unknown as Car[],
         totalDocs: result.totalDocs,
         totalPages: result.totalPages,
         page: result.page ?? filters.page,

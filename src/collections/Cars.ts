@@ -121,6 +121,7 @@ export const Cars: CollectionConfig = {
           type: 'relationship',
           relationTo: 'brands',
           required: true,
+          index: true,
         },
         {
           name: 'model',
@@ -138,6 +139,7 @@ export const Cars: CollectionConfig = {
           required: true,
           min: 1950,
           max: new Date().getFullYear() + 1,
+          index: true,
         },
         {
           name: 'vin',
@@ -155,6 +157,7 @@ export const Cars: CollectionConfig = {
           type: 'number',
           required: true,
           min: 0,
+          index: true,
           admin: {
             description: 'Price in EUR.',
           },
@@ -174,6 +177,7 @@ export const Cars: CollectionConfig = {
       type: 'number',
       required: true,
       min: 0,
+      index: true,
       admin: {
         description: 'Mileage in kilometres.',
       },
@@ -185,6 +189,7 @@ export const Cars: CollectionConfig = {
           name: 'fuelType',
           type: 'select',
           required: true,
+          index: true,
           options: [
             { label: 'Petrol', value: 'petrol' },
             { label: 'Diesel', value: 'diesel' },
@@ -197,6 +202,7 @@ export const Cars: CollectionConfig = {
           name: 'transmission',
           type: 'select',
           required: true,
+          index: true,
           options: [
             { label: 'Manual', value: 'manual' },
             { label: 'Automatic', value: 'automatic' },
@@ -206,6 +212,7 @@ export const Cars: CollectionConfig = {
           name: 'bodyType',
           type: 'select',
           required: true,
+          index: true,
           options: [
             { label: 'Sedan', value: 'sedan' },
             { label: 'SUV', value: 'suv' },
@@ -305,6 +312,7 @@ export const Cars: CollectionConfig = {
           type: 'select',
           required: true,
           defaultValue: 'available',
+          index: true,
           options: [
             { label: 'Available', value: 'available' },
             { label: 'Reserved', value: 'reserved' },
@@ -315,6 +323,7 @@ export const Cars: CollectionConfig = {
           name: 'featured',
           type: 'checkbox',
           defaultValue: false,
+          index: true,
           admin: {
             description: 'Show on the homepage featured strip.',
           },
